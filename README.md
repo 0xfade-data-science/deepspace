@@ -29,12 +29,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Libraries for building linera regression model
+#Libraries for building linera regression model
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
 
-# Import library for pre processing data
+#Import library for pre processing data
 from sklearn.model_selection import train_test_split
 
 </code>
