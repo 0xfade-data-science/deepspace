@@ -1,12 +1,13 @@
 # Deep Space
 
-Deep Space is an umbrella library that runs on top of major data science libraries as <a href="https://scikit-learn.org/"> scikit-learn learn </a> and <a href="https://www.statsmodels.org/">statsmodel<a> to site only few. 
-It is the result of the course I took from MIT Education Professional labeled MIT Advanced Data Science Program.
+Deep Space is an umbrella library that runs on top of major data science libraries as [scikit-learn learn](https://scikit-learn.org/), [statsmodel](https://www.statsmodels.org/), [tensorflow](https://www.tensorflow.org/) to site only a few. 
+It is the result of the 4 months course I took from **MIT Education Professional labeled MIT Advanced Data Science Program**.
 
 In some aspects this Deep Space library resemble the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
+You can see it as a **syntactic sugar** with a bunch of **reusable classes**.
 
 ## Objective
-The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oritented, a.k.a. OOP, and Monadic, i.e. using the Monada paradigm borrowed from the courses I took in functional programming - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
+The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oritented, a.k.a. OOP, and Monadic, i.e. using the Monada paradigm borrowed from functional programming world (Haskel for instance) - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
 
 ## Example
 Let's say you work on a data science project in which you are asked to predict prices in the used cars industry. 
