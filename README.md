@@ -86,7 +86,7 @@ sns.heatmap(..)
 
 ### The DeepSpace way:
 #### Overview of data
-Deep Space library tries to overcome the tedious and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
+Deep Space library tries to overcome the tedious and repetitive tasks and offers a pre-defined set of classes to make it easy and faster:
 ```
 from DeepSpace.Initialize import Initialize
 Initialize(seed=1)
