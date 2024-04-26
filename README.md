@@ -37,6 +37,72 @@ from sklearn.linear_model import LinearRegression
 #Import library for pre processing data
 from sklearn.model_selection import train_test_split
 
+data = pd.read_csv("Sales.csv")
+#Make a copy 
+data = kart.copy()
+data.head()
+data.tail()
+data.shape
+data.info()
+#check null values
+data.isnull.sum()
+#check duplicates
+data.duplicated().sum()
+data.describe()
+
+#check unique values
+cat_col = list(data.select_dtypes("object").columns)
+for column in cat_col:
+    print(data[column].value_counts())
+    print("-" * 50)
+#univarie analysis
+##univariate numerical features analysis
+data.hist()
+..
+##univariate categorical features analysis
+sns.heatmap(..)
+..
+#data preprocessing
+#check and treat outliers
+..
+#split the data
+..
+#scale the data
+..
+#data building
+..
 </code>
 
+Deep Space library tries to overcome the tedious task and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
+from DeepSpace.Initialize import Initialize
+Initialize(seed=1)
+
+from DeepSpace.transformers.Transformer import Transformer
+from DeepSpace.transformers.file.File import File
+from DeepSpace.transformers.file.Load import CSVLoader
+from DeepSpace.DataSpace import DataSpace
+from DeepSpace.transformers.chain.Start import Start, Start2
+from DeepSpace.transformers.chain.Milestone import Milestone
+from DeepSpace.transformers.chain.Finish import Finish, Intermed
+from DeepSpace.transformers.overview.Overview import Overview
+from DeepSpace.transformers.overview.Describe import Describe
+from DeepSpace.transformers.outliers.Check import CheckOutliers
+from DeepSpace.transformers.duplicates.CheckDuplicated import CheckDuplicated
+from DeepSpace.transformers.null.Check import CheckNulls
+from DeepSpace.transformers.overview.CheckUniqueness import CheckUniqueness
+
+file = "travel_train_data"
+view_chain_result =  (
+     >> CSVLoader(file, ",")
+     >> Overview() 
+     >> Describe() 
+     >> CheckUniqueness()
+     >> CheckNulls() 
+     >> CheckDuplicated()
+     >> CheckOutliers()
+     >> Milestone()
+)
+
+The >> chevrons are the expression of the Monads strategy.
+  
 
