@@ -1,14 +1,16 @@
 <H1> Deep Space </H1>
 
-Deep Space is an umbrella library that runs on top of major data science libraries as <a href="https://scikit-learn.org/"> scikit-learn learn </a> and <a href="https://www.statsmodels.org/">statsmodel<a> to site only few.
+Deep Space is an umbrella library that runs on top of major data science libraries as <a href="https://scikit-learn.org/"> scikit-learn learn </a> and <a href="https://www.statsmodels.org/">statsmodel<a> to site only few. 
 It is the result of the course I took from MIT Education Professional labeled MIT Advanced Data Science Program.
 
+In some aspects the Deep Space resemble the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
+
 <h2>Objective</h2>
-The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don'tRepeat Yourself), object oritented, a.k.a.OOP, and Monadic, i.e. using the Monada paradigm borrowed from the courses I took in functional programming - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used together to solve our main goals.
+The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oritented, a.k.a. OOP, and Monadic, i.e. using the Monada paradigm borrowed from the courses I took in functional programming - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
 
 <h2>Example</h2>
-Let's say work on a data science project in which you are asked to predict prices in the used cars industry. 
-And for that objective you are given some inputs as a csv file with rows and columns (or features).
+Let's say you work on a data science project in which you are asked to predict prices in the used cars industry. 
+And for that purpose you are given some inputs as a csv file with rows and features.
 
 The general strategy is as follows (besides understanding the business needs in details):
 1. import major libraries
@@ -92,6 +94,7 @@ from DeepSpace.transformers.null.Check import CheckNulls
 from DeepSpace.transformers.overview.CheckUniqueness import CheckUniqueness
 
 file = "travel_train_data"
+#overview of the data 
 view_chain_result =  (
      >> CSVLoader(file, ",")
      >> Overview() 
@@ -105,5 +108,28 @@ view_chain_result =  (
 </code>
 
 The >> chevrons are the expression of the Monads strategy.
-  
 
+The above code can also be simplified by creatin a class a not rewriting the whole code gain:
+<code>
+class SuperOverview(Monad):
+  def __init__(self, file, sep=','):
+      super().__init__()
+      self.file = file
+      self.sep = sep
+  def transform(self, ds:DataSpace):
+      return (
+         >> CSVLoader(self.file, self.sep)
+         >> Overview() 
+         >> Describe() 
+         >> CheckUniqueness()
+         >> CheckNulls() 
+         >> CheckDuplicated()
+         >> CheckOutliers()
+         >> Milestone()
+    )
+</code>
+
+Now you can use SuperOverview class like this in your future code :
+<code>
+    (SuperOverview() >> Milestone())
+</code>
