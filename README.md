@@ -130,5 +130,5 @@ class SuperOverview(Trasnformer):
 ```
 Now you can use SuperOverview class like this in your future code :
 ```
-    (SuperOverview() >> Milestone())
+    (SuperOverview(file) >> Milestone())
 ```
