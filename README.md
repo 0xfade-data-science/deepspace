@@ -84,6 +84,8 @@ sns.heatmap(..)
 ..
 ```
 
+### The DeepSpace way:
+#### Overview of data
 Deep Space library tries to overcome the tedious and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
 ```
 from DeepSpace.Initialize import Initialize
@@ -112,8 +114,7 @@ view_chain_result =  (
 )
 ```
 The >> chevrons are the expression of the Monads strategy.
-### The DeepSpace way:
-#### Overview of data
+
 The above code can also be simplified by creating a class a not rewriting the whole code gain:
 ```
 class SuperOverview(Trasnformer):
