@@ -109,7 +109,7 @@ view_chain_result =  (
 ```
 The >> chevrons are the expression of the Monads strategy.
 
-The above code can also be simplified by creatin a class a not rewriting the whole code gain:
+Also the above code can also be simplified by creating a class a not rewriting the whole code gain:
 ```
 class SuperOverview(Trasnformer):
   def __init__(self, file, sep=','):
