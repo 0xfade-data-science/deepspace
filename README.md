@@ -82,13 +82,8 @@ Deep Space library tries to overcome the tedious and repetive tasks and offers a
 from DeepSpace.Initialize import Initialize
 Initialize(seed=1)
 <code>
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.transformers.file.File import File
 from DeepSpace.transformers.file.Load import CSVLoader
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.chain.Start import Start, Start2
 from DeepSpace.transformers.chain.Milestone import Milestone
-from DeepSpace.transformers.chain.Finish import Finish, Intermed
 from DeepSpace.transformers.overview.Overview import Overview
 from DeepSpace.transformers.overview.Describe import Describe
 from DeepSpace.transformers.outliers.Check import CheckOutliers
