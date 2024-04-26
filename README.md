@@ -3,7 +3,7 @@
 Deep Space is an umbrella library that runs on top of major data science libraries as [scikit-learn learn](https://scikit-learn.org/), [statsmodel](https://www.statsmodels.org/), [tensorflow](https://www.tensorflow.org/) to site only a few. 
 It is the result of the 4 months course I took from **MIT Education Professional labeled MIT Advanced Data Science Program**.
 
-In some aspects this Deep Space library resemble the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
+In some aspects this Deep Space library resembles the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
 You can see it as a **syntactic sugar** with a bunch of **reusable classes**.
 
 ## Objective
