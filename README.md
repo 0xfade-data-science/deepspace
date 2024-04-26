@@ -1,18 +1,18 @@
-<H1> Deep Space </H1>
+# Deep Space
 
 Deep Space is an umbrella library that runs on top of major data science libraries as <a href="https://scikit-learn.org/"> scikit-learn learn </a> and <a href="https://www.statsmodels.org/">statsmodel<a> to site only few. 
 It is the result of the course I took from MIT Education Professional labeled MIT Advanced Data Science Program.
 
 In some aspects the Deep Space resemble the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
 
-<h2>Objective</h2>
+## Objective
 The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oritented, a.k.a. OOP, and Monadic, i.e. using the Monada paradigm borrowed from the courses I took in functional programming - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
 
-<h2>Example</h2>
+## Example
 Let's say you work on a data science project in which you are asked to predict prices in the used cars industry. 
 And for that purpose you are given some inputs as a csv file with rows and features.
 
-The general strategy is as follows (besides understanding the business needs in details):
+The general strategy or steps is as follows (besides understanding the business needs in details):
 1. import major libraries
 2. load the file
 3. overview the data
@@ -22,7 +22,7 @@ The general strategy is as follows (besides understanding the business needs in 
 7. validate the model
 
 It goes like this :
-<code>
+```
 #Libraries for reading and manipulating data
 import numpy as np
 import pandas as pd
@@ -78,7 +78,7 @@ sns.heatmap(..)
 ..
 #data building
 ..
-</code>
+```
 
 Deep Space library tries to overcome the tedious and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
 from DeepSpace.Initialize import Initialize
