@@ -155,8 +155,8 @@ The same hereafter for bivariate analysis:
 ```
     (milestone >> Bivariate(num_cols=(), cat_cols=[]) >> Milestone())
 ```
-### Data preprocessing
-#### Drop non useful features
+#### Data preprocessing
+##### Drop non useful features
 Drop ID feature: 
 ```
 milestone = (
@@ -174,7 +174,7 @@ milestone = (
     >> DropCols()
     >> Milestone()
 )
-#### Null imputation and dupàlicates removal
+##### Null imputation and dupàlicates removal
 Impute nulls (by default categorical with be imputed with the mode and numerical with the mean):
 ```
 saveto = 'milestone-imputation-no-dupes.pkl'
@@ -186,7 +186,7 @@ milestone = (
     >> Milestone()
 )
 You can also save the result to a file (pckle file) to be reused later.
-#### Feature engineering
+##### Feature engineering
 milestone = (
     milestone
                 >> Log('Departure_Delay_in_Mins', 'Departure_Delay_in_Mins_Log')                
@@ -198,7 +198,7 @@ milestone = (
                 >> Sine('Travel_Distance', 'Travel_Distance_Sine')                
                 >> Milestone()
 )
-#### Separating and Splitting
+##### Separating and Splitting
 milestone = (
     milestone
         >> EncoderBeforeSplit()
@@ -217,7 +217,7 @@ milestone = (
         >> Save('clean_train_chain_result-post-merge-split.pkl')
         >> Milestone()
 )
-#### Model Building and testing
+##### Model Building and testing
 from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.Model import LogisticRegression
 from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.performance.Calc import Calc as PerfCalculator
 #from DeepSpace.transformers.model.regression.linear.sklearn.LogisticRegression.performance.Show import Show as PerfViewer
