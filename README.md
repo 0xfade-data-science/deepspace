@@ -81,9 +81,10 @@ sns.heatmap(..)
 ```
 
 Deep Space library tries to overcome the tedious and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
+```
 from DeepSpace.Initialize import Initialize
 Initialize(seed=1)
-<code>
+
 from DeepSpace.transformers.file.Load import CSVLoader
 from DeepSpace.transformers.chain.Milestone import Milestone
 from DeepSpace.transformers.overview.Overview import Overview
@@ -105,13 +106,12 @@ view_chain_result =  (
      >> CheckOutliers()
      >> Milestone()
 )
-</code>
-
+```
 The >> chevrons are the expression of the Monads strategy.
 
 The above code can also be simplified by creatin a class a not rewriting the whole code gain:
-<code>
-class SuperOverview(Monad):
+```
+class SuperOverview(Trasnformer):
   def __init__(self, file, sep=','):
       super().__init__()
       self.file = file
@@ -127,9 +127,8 @@ class SuperOverview(Monad):
          >> CheckOutliers()
          >> Milestone()
     )
-</code>
-
+```
 Now you can use SuperOverview class like this in your future code :
-<code>
+```
     (SuperOverview() >> Milestone())
-</code>
+```
