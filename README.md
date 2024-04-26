@@ -24,37 +24,42 @@ It goes like this :
 #Libraries for reading and manipulating data
 import numpy as np
 import pandas as pd
-
+..
 #Import data viz libraries
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+..
 #Libraries for building linera regression model
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
-
+..
 #Import library for pre processing data
 from sklearn.model_selection import train_test_split
-
+..
 data = pd.read_csv("Sales.csv")
 #Make a copy 
 data = kart.copy()
+..
 data.head()
+..
 data.tail()
+..
 data.shape
+..
 data.info()
+..
 #check null values
 data.isnull.sum()
 #check duplicates
 data.duplicated().sum()
-data.describe()
 
 #check unique values
 cat_col = list(data.select_dtypes("object").columns)
 for column in cat_col:
     print(data[column].value_counts())
     print("-" * 50)
+..
 #univarie analysis
 ##univariate numerical features analysis
 data.hist()
@@ -73,10 +78,10 @@ sns.heatmap(..)
 ..
 </code>
 
-Deep Space library tries to overcome the tedious task and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
+Deep Space library tries to overcome the tedious and repetive tasks and offers a pre-defined set of classes to make it easy and faster:
 from DeepSpace.Initialize import Initialize
 Initialize(seed=1)
-
+<code>
 from DeepSpace.transformers.Transformer import Transformer
 from DeepSpace.transformers.file.File import File
 from DeepSpace.transformers.file.Load import CSVLoader
@@ -102,6 +107,7 @@ view_chain_result =  (
      >> CheckOutliers()
      >> Milestone()
 )
+</code>
 
 The >> chevrons are the expression of the Monads strategy.
   
