@@ -1,7 +1,7 @@
 # Deep Space
 
 Deep Space is an umbrella library that runs on top of major data science libraries as [scikit-learn learn](https://scikit-learn.org/), [statsmodel](https://www.statsmodels.org/), [tensorflow](https://www.tensorflow.org/) to site only a few. 
-It is the result of the 4 months course I took from **MIT Education Professional labeled MIT Advanced Data Science Program**.
+It is the result of the 4 months course I took from **MIT Education Professional** labeled **[MIT Advanced Data Science Program](https://professional-education-gl.mit.edu/mit-applied-data-science-course)**.
 
 In some aspects this Deep Space library resembles the Pipeline library, which I discoverd quite late during the program but Deep Space uses another angle to solve the underlying problem. 
 You can see it as a **syntactic sugar** with a bunch of **reusable classes**.
@@ -13,6 +13,8 @@ The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat
 Let's say you work on a data science project in which you are asked to predict prices in the used cars industry. 
 And for that purpose you are given some inputs as a csv file with rows and features.
 
+### The main process 
+
 The general strategy or steps is as follows (besides understanding the business needs in details):
 1. import major libraries
 2. load the file
@@ -22,6 +24,7 @@ The general strategy or steps is as follows (besides understanding the business 
 6. build the model
 7. validate the model
 
+### The usual way:
 It goes like this :
 ```
 #Libraries for reading and manipulating data
@@ -109,8 +112,9 @@ view_chain_result =  (
 )
 ```
 The >> chevrons are the expression of the Monads strategy.
-
-Also the above code can also be simplified by creating a class a not rewriting the whole code gain:
+### The DeepSpace way:
+#### Overview of data
+The above code can also be simplified by creating a class a not rewriting the whole code gain:
 ```
 class SuperOverview(Trasnformer):
   def __init__(self, file, sep=','):
@@ -133,3 +137,29 @@ Now you can use SuperOverview class like this in your future code :
 ```
     (SuperOverview(file) >> Milestone())
 ```
+
+#### Data analysis, or Exploratory Data Analysis (EDA) 
+
+Just like so to show a bunch of plots (histograms, boxplots, etc) and calculations for the numerical features:
+```
+    (milestone >> numerical.Univariate(num_cols=[]) >> Milestone())
+```
+You can set the num_cols parameter to only show specific featrues.
+
+And the below code is for categorical features:
+```
+    (milestone >> categorical.Univariate() >> Milestone())
+```
+The same hereafter for bivariate analysis:
+```
+    (milestone >> Biivariate(num_cols=<(), cat_cols=[]) >> Milestone())
+```
+### Data preprocessing
+```
+(
+    milestone
+    >> 
+    >> Milestone()
+)
+```
+
