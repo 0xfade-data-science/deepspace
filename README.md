@@ -94,7 +94,7 @@ Initialize(seed=1)
 
 file = "travel_train_data"
 #overview of the data 
-view_chain_result =  (
+milestone =  (
      >> CSVLoader(file, ",")
      >> Overview() 
      >> Describe() 
@@ -107,7 +107,7 @@ view_chain_result =  (
 ```
 The >> chevrons are the expression of the Monads strategy.
 
-The above code can also be simplified by creating a class a not rewriting the whole code gain:
+The above code can also be simplified by creating a class a not rewriting the whole code again:
 ```
 class SuperOverview(Trasnformer):
   def __init__(self, file, sep=','):
@@ -128,7 +128,7 @@ class SuperOverview(Trasnformer):
 ```
 Now you can use SuperOverview class like this in your future code :
 ```
-    (SuperOverview(file) >> Milestone())
+milestone =  (SuperOverview(file) >> Milestone())
 ```
 
 #### Data analysis, or Exploratory Data Analysis (EDA) 
