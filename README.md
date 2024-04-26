@@ -90,15 +90,7 @@ Deep Space library tries to overcome the tedious and repetitive tasks and offers
 ```
 from DeepSpace.Initialize import Initialize
 Initialize(seed=1)
-
-from DeepSpace.transformers.file.Load import CSVLoader
-from DeepSpace.transformers.chain.Milestone import Milestone
-from DeepSpace.transformers.overview.Overview import Overview
-from DeepSpace.transformers.overview.Describe import Describe
-from DeepSpace.transformers.outliers.Check import CheckOutliers
-from DeepSpace.transformers.duplicates.CheckDuplicated import CheckDuplicated
-from DeepSpace.transformers.null.Check import CheckNulls
-from DeepSpace.transformers.overview.CheckUniqueness import CheckUniqueness
+#..
 
 file = "travel_train_data"
 #overview of the data 
@@ -187,6 +179,7 @@ milestone = (
 )
 You can also save the result to a file (pckle file) to be reused later.
 ##### Feature engineering
+```
 milestone = (
     milestone
                 >> Log('Departure_Delay_in_Mins', 'Departure_Delay_in_Mins_Log')                
@@ -198,7 +191,9 @@ milestone = (
                 >> Sine('Travel_Distance', 'Travel_Distance_Sine')                
                 >> Milestone()
 )
+```
 ##### Separating and Splitting
+```
 milestone = (
     milestone
         >> EncoderBeforeSplit()
@@ -217,13 +212,9 @@ milestone = (
         >> Save('clean_train_chain_result-post-merge-split.pkl')
         >> Milestone()
 )
+```
 ##### Model Building and testing
-from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.Model import LogisticRegression
-from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.performance.Calc import Calc as PerfCalculator
-#from DeepSpace.transformers.model.regression.linear.sklearn.LogisticRegression.performance.Show import Show as PerfViewer
-from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.performance.ShowCoeffs import ShowCoeffs, ShowInvCoeffs
-#from DeepSpace.transformers.file.Save import Save, Load
-
+```
 milestone = (
     milestone
             Load('clean_train_chain_result-post-merge-split.pkl')
@@ -234,4 +225,5 @@ milestone = (
             >> ShowInvCoeffs()
             >> Finish()
 )
+```
 
