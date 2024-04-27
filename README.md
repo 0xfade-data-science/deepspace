@@ -124,7 +124,7 @@ class SuperOverview(Trasnformer):
          >> CheckDuplicated()
          >> CheckOutliers()
          >> Milestone()
-    )
+    ).ds
 ```
 Now you can use SuperOverview class like this in your future code :
 ```
