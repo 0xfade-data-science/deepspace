@@ -21,8 +21,8 @@ The general strategy or steps is as follows (besides understanding the business 
 3. overview the data
 4. analyse the data
 5. preprocess the data
-6. build the model
-7. validate the model
+6. build models
+7. validate models
 
 ### The usual way:
 It goes like this :
