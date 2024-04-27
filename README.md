@@ -147,6 +147,11 @@ The same hereafter for bivariate analysis:
 ```
     (milestone >> Bivariate(num_cols=(), cat_cols=[]) >> Milestone())
 ```
+Anf if you want to see the heatmap only :
+The same hereafter for bivariate analysis:
+```
+    (milestone >> Heatmap(num_cols=()) >> Milestone())
+```
 #### Data preprocessing
 ##### Drop non useful features
 Drop ID feature: 
