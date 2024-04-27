@@ -107,7 +107,7 @@ milestone =  (
 ```
 The >> chevrons are the expression of the Monads strategy.
 
-The above code can also be simplified by creating a class a not rewriting the whole code again:
+The above code can also be simplified by creating a class and not rewriting the whole code again:
 ```
 class SuperOverview(Trasnformer):
   def __init__(self, file, sep=','):
