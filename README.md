@@ -171,6 +171,7 @@ milestone = (
     >> DropCols()
     >> Milestone()
 )
+```
 ##### Null imputation and dupàlicates removal
 Impute nulls (by default categorical with be imputed with the mode and numerical with the mean):
 ```
@@ -182,7 +183,8 @@ milestone = (
     >> Save(saveto)
     >> Milestone()
 )
-You can also save the result to a file (pckle file) to be reused later.
+```
+As you can see here can also save the result to a file (pckle file) to be reused later.
 ##### Feature engineering
 ```
 milestone = (
