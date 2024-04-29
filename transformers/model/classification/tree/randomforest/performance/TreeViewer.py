@@ -1,7 +1,7 @@
 
-from DeepSpace.transformers.model.regression.tree.ShowTree import ShowTree as BaseTreeViewer
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.model.regression.tree.ShowTree import ShowTree as BaseTreeViewer
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
 
 class TreeViewer(BaseTreeViewer):
     def __init__(self, max_depth=3, figsize=(25, 20), saveto=None) :

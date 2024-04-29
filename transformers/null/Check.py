@@ -1,8 +1,8 @@
-#from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-#from DeepSpace.transformers.outliers.Check import CheckOutliers
+#from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+#from deepspace.transformers.outliers.Check import CheckOutliers
 
-import DeepSpace.transformers.Transformer as T 
+import deepspace.transformers.Transformer as T 
 
 class CheckNulls(T.Transformer):
     ''''''

@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
 
 class ShowNOTUSED(Transformer):
     ''''''

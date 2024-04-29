@@ -1,9 +1,9 @@
 import pandas as pd
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.transformers.model.Abstract import Abstract as AbstractModel
-from DeepSpace.transformers.chain.Finish import Finish
-from DeepSpace.base import Base
+from deepspace.transformers.Transformer import Transformer
+from deepspace.transformers.model.Abstract import Abstract as AbstractModel
+from deepspace.transformers.chain.Finish import Finish
+from deepspace.base import Base
 
 class Chain(Transformer):
     def __init__(self, name='root', transformers=None):

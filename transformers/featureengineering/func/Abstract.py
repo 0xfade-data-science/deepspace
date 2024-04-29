@@ -1,7 +1,7 @@
 import numpy as np
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
 
 class FuncTransformer(Transformer):
     '''Target Feature Engineering'''

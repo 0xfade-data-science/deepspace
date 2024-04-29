@@ -1,4 +1,4 @@
-from DeepSpace.transformers.exploration.bivariate.BivariateAnalysis import BivariateAnalysis
+from deepspace.transformers.exploration.bivariate.BivariateAnalysis import BivariateAnalysis
 
 class NxN(BivariateAnalysis):
     def __init__(self, num_cols=[], only=[]):

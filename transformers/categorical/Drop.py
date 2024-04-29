@@ -1,7 +1,7 @@
 
-from DeepSpace.transformers.drop.DropCols import DropCols
-from DeepSpace.transformers.overview.CheckUniqueness import CheckUniqueness
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.drop.DropCols import DropCols
+from deepspace.transformers.overview.CheckUniqueness import CheckUniqueness
+from deepspace.DataSpace import DataSpace
 
 class Drop(DropCols, CheckUniqueness):
     ''' a categorical variable is defined as such if count is less than defined threshold

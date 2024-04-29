@@ -1,6 +1,6 @@
 
 
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.transformers.Transformer import Transformer
 
 class AdjustCols(Transformer):
     def __init__(self, num_cols=[], cat_cols=[], drop_cols=[]):

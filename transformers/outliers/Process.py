@@ -1,6 +1,6 @@
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.outliers.Check import CheckOutliers
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.outliers.Check import CheckOutliers
 
 class ProcessOutliers(CheckOutliers):
     ''' Only for Y, not tested yet'''

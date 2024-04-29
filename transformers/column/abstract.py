@@ -1,6 +1,6 @@
-from DeepSpace.transformers.Transformer import Transformer  
-#from DeepSpace.DataSpace import DataSpace provoques recursive import
-from DeepSpace.base import Base
+from deepspace.transformers.Transformer import Transformer  
+#from deepspace.DataSpace import DataSpace provoques recursive import
+from deepspace.base import Base
 
 class Abstract(Transformer):
     def __init__(self, target_col=None, cat_cols=[], num_cols=[], exclude=[], only=[], sep='=', nb=50):

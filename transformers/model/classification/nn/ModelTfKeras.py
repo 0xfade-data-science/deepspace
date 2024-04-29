@@ -5,10 +5,10 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
-from DeepSpace.transformers.model.Abstract import Abstract as AbstractModel
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-from DeepSpace.Initialize import Initialize
+from deepspace.transformers.model.Abstract import Abstract as AbstractModel
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+from deepspace.Initialize import Initialize
 
 class NeuralNetwork(AbstractModel):
     def __init__(self, seed=Initialize.seed, denses=[],

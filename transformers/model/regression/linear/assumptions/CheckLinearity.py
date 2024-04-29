@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
 
 class Tr_OLSLinearity(Transformer):
     '''TODO this is graphical replace by Shapiro-Wilk Test'''

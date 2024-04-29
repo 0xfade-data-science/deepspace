@@ -1,11 +1,11 @@
 import pandas as pd 
 from sklearn.preprocessing import MinMaxScaler
 
-#from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-#from DeepSpace.transformers.outliers.Check import CheckOutliers
+#from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+#from deepspace.transformers.outliers.Check import CheckOutliers
 
-import DeepSpace.transformers as T 
+import deepspace.transformers as T 
 
 class Scaler(T.Transformer.Transformer):
     '''not tested yet'''

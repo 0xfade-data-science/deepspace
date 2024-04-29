@@ -1,8 +1,8 @@
 
 import statsmodels.stats.api as sms
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
 
 # the error does not change much as the preodictor changes ?
 class CheckHomoscedasticity(Transformer):

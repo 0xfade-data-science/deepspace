@@ -1,5 +1,5 @@
 import numpy as np
-from DeepSpace.transformers.model.regression.linear.func.log.Abstract import FuncTransformer
+from deepspace.transformers.model.regression.linear.func.log.Abstract import FuncTransformer
 
 class Exp(FuncTransformer):
     '''Target Feature Engineering'''

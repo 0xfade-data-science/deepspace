@@ -1,10 +1,10 @@
 
-from DeepSpace.transformers.Meta import Meta
-from DeepSpace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckNormalityOfErrorTerms
-from DeepSpace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckResidualsMean
-from DeepSpace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckHomoscedasticity
-from DeepSpace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import Linearity
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Meta import Meta
+from deepspace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckNormalityOfErrorTerms
+from deepspace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckResidualsMean
+from deepspace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import CheckHomoscedasticity
+from deepspace.transformers.OLS.assumptions.CheckNormalityOfErrorTerms import Linearity
+from deepspace.DataSpace import DataSpace
 
 class CheckALLAssumptionsOnResiduals(Meta):
     '''TODO'''

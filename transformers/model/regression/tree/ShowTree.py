@@ -1,9 +1,9 @@
 import tree
 import matplotlib.pyplot as plt
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
 
 class ShowTree(Transformer):
     def __init__(self, max_depth=3, figsize=(25, 20), saveto=None) :

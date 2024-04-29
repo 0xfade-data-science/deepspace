@@ -1,9 +1,9 @@
 from sklearn.preprocessing import LabelEncoder
 
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.encode.X.BeforeSplit import EncoderBeforeSplit
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.encode.X.BeforeSplit import EncoderBeforeSplit
 
 ###############################################
 ## NO USED because not migrated to DataSpace ##

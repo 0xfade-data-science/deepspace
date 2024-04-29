@@ -1,9 +1,9 @@
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-#from DeepSpace.transformers.outliers.Check import CheckOutliers
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+#from deepspace.transformers.outliers.Check import CheckOutliers
 
-from DeepSpace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
+from deepspace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
 
 class Calc(PerformanceCalculator):
     def __init__(self) : 

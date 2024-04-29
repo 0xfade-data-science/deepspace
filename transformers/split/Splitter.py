@@ -1,8 +1,8 @@
 from sklearn.model_selection import train_test_split
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.Initialize import Initialize
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.Initialize import Initialize
 
 class Splitter(Transformer):
     def __init__(self, test_size=0.2, seed=Initialize.seed, dostratification=False):

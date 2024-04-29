@@ -1,7 +1,7 @@
 import sklearn
-from DeepSpace.transformers.model.Abstract import Abstract as AbstractModel
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
+from deepspace.transformers.model.Abstract import Abstract as AbstractModel
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
 
 class LogisticRegression(AbstractModel):
     def __init__(self) :

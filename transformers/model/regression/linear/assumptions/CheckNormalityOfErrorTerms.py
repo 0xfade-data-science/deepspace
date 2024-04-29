@@ -1,8 +1,8 @@
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
     
 class CheckNormalityOfErrorTerms(Transformer):
     '''TODO this is graphical replace by Shapiro-Wilk Test'''

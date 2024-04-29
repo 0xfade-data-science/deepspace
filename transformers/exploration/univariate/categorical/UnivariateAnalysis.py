@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.column.abstract import Abstract
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.column.abstract import Abstract
 
 class UnivariateAnalysis(Abstract):
     def __init__(self, cat_cols = [], ord_cols = [], normalize=True, only=[], debug=False):

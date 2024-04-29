@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
 
 class Calc(PerformanceCalculator):
     def __init__(self) : 

@@ -1,6 +1,6 @@
 from sklearn.linear_model import Lasso
 
-from DeepSpace.transformers.model.regression.linear.sklearn.Ridge.Ridge import Model as RidgeModel
+from deepspace.transformers.model.regression.linear.sklearn.Ridge.Ridge import Model as RidgeModel
 
 class Model(RidgeModel):
     def __init__(self,  dotuning=True, params={'alpha':[0.001, 0.01, 0.1, 0.2, 0.5, 0.9, 1, 5,10,20]} ) :

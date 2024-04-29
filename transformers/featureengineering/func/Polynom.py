@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures
 
-from DeepSpace.transformers.featureengineering.func.Abstract import FuncTransformer
+from deepspace.transformers.featureengineering.func.Abstract import FuncTransformer
 
 class Polynom(FuncTransformer):
     '''Target Feature Engineering'''

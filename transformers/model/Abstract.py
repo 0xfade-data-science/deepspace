@@ -4,10 +4,10 @@
 ########################################################################
 
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-from DeepSpace.Initialize import Initialize
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+from deepspace.Initialize import Initialize
 
 class Abstract(Transformer):
     def __init__(self, seed=Initialize.seed) : #, perfchecker : MyPerformanceChecker):

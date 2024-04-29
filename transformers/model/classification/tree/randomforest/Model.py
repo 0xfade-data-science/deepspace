@@ -1,9 +1,9 @@
 from sklearn.ensemble import RandomForestRegressor,BaggingRegressor
 
-from DeepSpace.transformers.model.regression.tree.Model import Model as DecisionTree
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.Initialize import Initialize
+from deepspace.transformers.model.regression.tree.Model import Model as DecisionTree
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
+from deepspace.Initialize import Initialize
 
 class Model(DecisionTree):
     def __init__(self, seed=Initialize.seed, max_depth=None, criterion="log_loss", min_samples_leaf=1, show_summary=False, text_mode=True) :

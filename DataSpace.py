@@ -4,9 +4,9 @@
 import pandas as pd
 import copy as copier
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.transformers.column.abstract import Abstract as AbstractTransformer
-from DeepSpace.transformers.file.File import File
+from deepspace.transformers.Transformer import Transformer
+from deepspace.transformers.column.abstract import Abstract as AbstractTransformer
+from deepspace.transformers.file.File import File
 
 class DataSpace(AbstractTransformer):
     def __init__(self, docopy=True):

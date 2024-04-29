@@ -1,4 +1,4 @@
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.transformers.Transformer import Transformer
 
 class Meta(Transformer):
     def __init__(self, transformers: list=[]):

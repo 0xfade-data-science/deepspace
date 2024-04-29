@@ -1,12 +1,12 @@
 import pandas as pd
 
-#from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-#from DeepSpace.transformers.outliers.Check import CheckOutliers
+#from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+#from deepspace.transformers.outliers.Check import CheckOutliers
 
-import DeepSpace.transformers as T 
-from DeepSpace.transformers.scale.Scaler2 import Scaler2
-from DeepSpace.transformers.scale.inverse.train.X import XInverseScaler2
+import deepspace.transformers as T 
+from deepspace.transformers.scale.Scaler2 import Scaler2
+from deepspace.transformers.scale.inverse.train.X import XInverseScaler2
 
 class YInverseScaler2(XInverseScaler2):
     '''not tested yet'''

@@ -1,6 +1,6 @@
 import pandas as pd
-from DeepSpace.base import Base
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.base import Base
+from deepspace.transformers.Transformer import Transformer
 
 class Milestone(Transformer):
     def __init__(self, ds=None, chainlink=None, clone=False):

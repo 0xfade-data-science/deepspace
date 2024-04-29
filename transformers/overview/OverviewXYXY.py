@@ -1,5 +1,5 @@
-from DeepSpace.transformers.overview.Overview import Overview
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.overview.Overview import Overview
+from deepspace.DataSpace import DataSpace
 
 class OverviewXYXY(Overview):
     ''''''

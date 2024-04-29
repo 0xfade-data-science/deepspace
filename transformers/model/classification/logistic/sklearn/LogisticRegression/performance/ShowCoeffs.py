@@ -3,9 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns 
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+from deepspace.transformers.Transformer import Transformer
 
 
 class ShowCoeffs(Transformer):

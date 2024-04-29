@@ -4,8 +4,8 @@ from pandas.api.types import is_numeric_dtype
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.exploration.bivariate.HeatmapAnalysis import HeatmapAnalysis
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.exploration.bivariate.HeatmapAnalysis import HeatmapAnalysis
 
 class BivariateAnalysis(HeatmapAnalysis):
     def __init__(self, num_cols=[], cat_cols=[], ord_cols=[], donvn=True, docvn=True, docvc=True, doheatmap=True, violin=True, only=[]):

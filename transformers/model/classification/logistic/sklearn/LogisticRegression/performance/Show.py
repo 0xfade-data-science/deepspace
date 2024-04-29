@@ -6,9 +6,9 @@ from sklearn.metrics import confusion_matrix, classification_report, recall_scor
 
 import pandas as pd
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+from deepspace.transformers.Transformer import Transformer
 
 
 class ShowNOTFINISHED(Transformer):

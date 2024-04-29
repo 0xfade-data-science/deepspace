@@ -1,5 +1,5 @@
 import numpy as np
-from DeepSpace.transformers.featureengineering.func.Abstract import FuncTransformer
+from deepspace.transformers.featureengineering.func.Abstract import FuncTransformer
 
 class Sqrt(FuncTransformer):
     '''Target Feature Engineering'''

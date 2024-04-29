@@ -1,7 +1,7 @@
 import pdb
 import pandas as pd
-from DeepSpace.base import Base
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.base import Base
+from deepspace.transformers.Transformer import Transformer
 import pickle
 
 class Load(Transformer):

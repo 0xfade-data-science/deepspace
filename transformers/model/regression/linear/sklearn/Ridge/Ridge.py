@@ -1,9 +1,9 @@
 from sklearn.linear_model import Ridge
 
-from DeepSpace.Initialize import Initialize
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
-from DeepSpace.transformers.model.Abstract import Abstract as AbstractModel
+from deepspace.Initialize import Initialize
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
+from deepspace.transformers.model.Abstract import Abstract as AbstractModel
 
 class Model(AbstractModel):
     def __init__(self, seed=Initialize.seed, dotuning=True, params={'alpha':[0.001, 0.01, 0.1, 0.2, 0.5, 0.9, 1, 5,10,20]} ) :

@@ -6,10 +6,10 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.transformers.model.Abstract import Abstract
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.Initialize import Initialize
+from deepspace.transformers.model.Abstract import Abstract
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
+from deepspace.Initialize import Initialize
 
 class Model(Abstract):
     def __init__(self, seed=Initialize.seed, max_depth=None, criterion="squared_error", min_samples_leaf=1, show_summary=False, text_mode=True) :

@@ -2,9 +2,9 @@
 import statsmodels.api as sm
 import statsmodels.stats.api as sms
 
-from DeepSpace.transformers.model.Abstract import Abstract as AbstractModel
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
+from deepspace.transformers.model.Abstract import Abstract as AbstractModel
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
 
 class OLS(AbstractModel):
     def __init__(self) : #, perfchecker : MyPerformanceChecker):

@@ -1,5 +1,5 @@
 
-from DeepSpace.base import Base
+from deepspace.base import Base
 import pdb
 
 class Transformer(Base):

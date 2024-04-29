@@ -1,9 +1,9 @@
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.drop.DropColsXYXY import DropColsXYXY
-from DeepSpace.transformers.column.abstract import Abstract
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.drop.DropColsXYXY import DropColsXYXY
+from deepspace.transformers.column.abstract import Abstract
 
 class Tr_OLSRemoveMulticolinearity(DropColsXYXY, Abstract):
     '''TODO'''

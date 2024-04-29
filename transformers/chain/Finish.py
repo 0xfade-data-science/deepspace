@@ -1,4 +1,4 @@
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.transformers.Transformer import Transformer
 
 class Finish(Transformer):
     def __init__(self, ds=None):

@@ -1,7 +1,7 @@
 import pandas as pd
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
 
 class Show(Transformer):
     ''''''

@@ -1,8 +1,8 @@
 from sklearn.ensemble import RandomForestRegressor,BaggingRegressor
 
-from DeepSpace.transformers.model.classification.tree.performance.Calc import Calc as PerformanceCalculator
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.model.classification.tree.performance.Calc import Calc as PerformanceCalculator
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
 
 
 class Calc(PerformanceCalculator):

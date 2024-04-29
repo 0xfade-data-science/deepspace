@@ -1,7 +1,7 @@
 
-from DeepSpace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
+from deepspace.transformers.model.regression.linear.statsmodel.performance.Calc import Calc as PerformanceCalculator
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
 
 class Calc(PerformanceCalculator):
     def __init__(self, target_col) :

@@ -1,9 +1,9 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor,BaggingRegressor
 
-from DeepSpace.transformers.model.regression.tree.performance.Show import Show as PerformanceViewer
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.model.regression.tree.performance.Show import Show as PerformanceViewer
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
 
 class Show(PerformanceViewer):
     ''''''

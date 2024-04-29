@@ -1,11 +1,11 @@
 
 from sklearn.impute import SimpleImputer
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
-#from DeepSpace.transformers.outliers.Check import CheckOutliers
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
+#from deepspace.transformers.outliers.Check import CheckOutliers
 
-from DeepSpace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.abstract import Abstract
 
 class ProcessImputation(Abstract):
     ''' Only for X'''

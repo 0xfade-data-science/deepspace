@@ -1,4 +1,4 @@
-from DeepSpace.transformers.Transformer import Transformer
+from deepspace.transformers.Transformer import Transformer
 
 #Specific to current projet
 class FeatureEngineerBrandFromName(Transformer):

@@ -1,5 +1,5 @@
-from DeepSpace.transformers.drop.DropCols import DropCols
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.drop.DropCols import DropCols
+from deepspace.DataSpace import DataSpace
 
 class DropColsXYXY(DropCols):
     def __init__(self, cols=[], inplace=True):

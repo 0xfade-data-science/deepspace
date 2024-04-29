@@ -1,4 +1,4 @@
-from DeepSpace.DataSpace import DataSpace
+from deepspace.DataSpace import DataSpace
 
 class CheckNormality(Transformer):
     '''TODO this is graphical replace by Shapiro-Wilk Test'''

@@ -3,10 +3,10 @@ from sklearn.metrics import roc_curve
 import matplotlib.pyplot as plt
 
 import pandas as pd
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.base import Base
+from deepspace.DataSpace import DataSpace
+from deepspace.base import Base
 
-from DeepSpace.transformers.model.classification.logistic.sklearn.LogisticRegression.performance.Calc import Calc as PerformanceCalculator
+from deepspace.transformers.model.classification.logistic.sklearn.LogisticRegression.performance.Calc import Calc as PerformanceCalculator
 
 class Calc(PerformanceCalculator):
     def __init__(self, threshold=0.5) : 

@@ -1,4 +1,4 @@
-from DeepSpace.transformers.exploration.bivariate.BivariateAnalysis import BivariateAnalysis
+from deepspace.transformers.exploration.bivariate.BivariateAnalysis import BivariateAnalysis
 
 class CxC(BivariateAnalysis):
     def __init__(self, cat_cols=[], ord_cols=[], only=[]):

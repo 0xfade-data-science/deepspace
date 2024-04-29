@@ -3,9 +3,9 @@ from pandas.api.types import is_numeric_dtype
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.column.abstract import Abstract
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.column.abstract import Abstract
 
 class UnivariateAnalysis(Abstract):
     def __init__(self, num_cols=[], exclude=[], simple_histos=True, boxplot_histos=True, violin=True, bins=None, limit=None):

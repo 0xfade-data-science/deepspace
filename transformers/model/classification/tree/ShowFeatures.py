@@ -3,9 +3,9 @@ from sklearn import tree
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.base import Base
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.base import Base
+from deepspace.DataSpace import DataSpace
 
 class ShowMainFeatures(Transformer):
     def __init__(self, max_depth=3, figsize=(25, 20), saveto=None) :

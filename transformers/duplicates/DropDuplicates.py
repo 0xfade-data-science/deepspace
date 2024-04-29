@@ -1,5 +1,5 @@
-from DeepSpace.transformers.Transformer import Transformer
-from DeepSpace.DataSpace import DataSpace
+from deepspace.transformers.Transformer import Transformer
+from deepspace.DataSpace import DataSpace
 
 class DropDuplicates(Transformer):
     def __init__(self, keep='first', inplace=True, ignore_index=True):

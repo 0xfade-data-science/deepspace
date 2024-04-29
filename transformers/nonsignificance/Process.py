@@ -1,7 +1,7 @@
 import pandas as pd
 
-from DeepSpace.DataSpace import DataSpace
-from DeepSpace.transformers.drop.DropCols import DropCols
+from deepspace.DataSpace import DataSpace
+from deepspace.transformers.drop.DropCols import DropCols
 
 class RemoveNonSignificantFeatures(DropCols):
     '''TODO'''
