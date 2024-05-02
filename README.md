@@ -276,6 +276,8 @@ milestone = (
             >> Finish()
 )
 ```
+### Complete example
+You can find a complete example here: [Uber example notebook](https://github.com/0xfade-data-science/deepspace/blob/main/examples/data%20exploration/Uber/Uber_Case_Study-the-deepspace-way.ipynb)
 
 ## Versions
 
