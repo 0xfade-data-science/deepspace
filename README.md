@@ -16,7 +16,7 @@ With Milestone objects, integrated cloning, and checkpoint backup, it makes it e
 
 DeepSpace will come with a bunch of predefined classes hence the programmer does not need to create the wheel again.
 
-DeepSpace library will simplify a first analysis of the problem, it gives a rapid glimpse thanks to it's packaged classes.
+DeepSpace library will simplify a first analysis of the problem, it gives a rapid glimpse thanks to it's packaged classes, aiming at getting a first model rapidly.
 
 ## Example
 
