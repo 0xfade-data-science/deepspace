@@ -8,7 +8,13 @@ You can see it as a **syntactic sugar** with a bunch of **reusable classes**.
 
 ## Objective
 
-The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oritented, a.k.a. OOP, and Monadic, i.e. using the Monada paradigm borrowed from functional programming world (Haskel for instance) - Monads and Classes are quite smilar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
+The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat Yourself), object oriented, a.k.a. OOP, and Monadic, i.e. using the Monad paradigm borrowed from functional programming world (Haskel for instance) - Monads and Classes are quite similar concepts, tend to solve the same issues in computer science, and here they are used altogether to solve our main goals.
+
+Using OOP paradigm, DeepSpace will **encapsulate** x, y, x_train, x_test, y_train, y_test - as well as other variables - making it easy to manage them.
+
+With Milestone objects, and integrated cloning, it makes it easier to go to a specific checkpoint in the project and start from there a new branch.
+
+DeepSpace will come with a bunch of predefined classes hence the programmer does not need to create the wheel again.
 
 ## Example
 

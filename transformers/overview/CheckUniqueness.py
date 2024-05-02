@@ -16,4 +16,5 @@ class CheckUniqueness(Transformer):
         self.view_uniqueness(df)
     def view_uniqueness(self, df):
         self.separator()
-        self.display(self.get_uniqueness(df).to_frame())
+        df = self.get_uniqueness(df).to_frame().sort_values(by=[0])
+        self.display(df)

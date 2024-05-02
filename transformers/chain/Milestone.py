@@ -7,11 +7,13 @@ class Milestone(Transformer):
         Base.__init__(self, sep='=', nb=50)
         Transformer.__init__(self)
         self.doclone = clone
+        transformers = []
         if chainlink:
             ds = chainlink.ds
+            transformers = chainlink.transformers
         if clone:
             ds = ds.clone()
         self.ds = ds
-    def transform(self, ds):    
-        self.ds = ds
-        return ds   
+        self.transformers = transformers
+    def clone(self):    
+        return Milestone(ds=self.ds, clone=True)   

@@ -11,15 +11,10 @@ class Chain(Transformer):
         self.name = name
         self.transformers = transformers
         self.chains = []
-    #def transform(self, t:Finish):
-    #    self.transformer = t
-    #    self.chains.append(t.chain) 
-    #    self.ds = t.ds
-    #    return t
     def add(self, chain):
        self.chains.append(chain)
     def show(self, show_transformers=True, level=0):
-        shifts = level*'\t' 
+        shifts = level*' ' 
         print(shifts+self.name)
         if len(self.chains) <=0 and show_transformers:
            csv = ','.join([str(t) for t in self.transformers])

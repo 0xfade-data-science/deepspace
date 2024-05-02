@@ -6,14 +6,18 @@ from deepspace.DataSpace import DataSpace
 #from deepspace.transformers.outliers.Check import CheckOutliers
 
 from deepspace.transformers.column.abstract import Abstract
+from .Check import CheckNulls
 
-class ProcessImputation(Abstract):
+class ProcessImputation(Abstract, CheckNulls):
     ''' Only for X'''
-    def __init__(self, num_cols=[], cat_cols=[], method='mean', drop_first=True):
+    def __init__(self, num_cols=[], cat_cols=[], method='mean', cols=[], value=None, drop_first=True):
         Abstract.__init__(self, num_cols=num_cols, cat_cols=cat_cols)
+        CheckNulls.__init__(self)
         self.num_cols = num_cols
         self.cat_cols = cat_cols
+        self.cols = cols
         self.method = method
+        self.value = value
 
     def transform(self, ds: DataSpace):
         self.ds = ds
@@ -21,11 +25,15 @@ class ProcessImputation(Abstract):
         self.df = ds.data
         if self.method == 'drop':
             self.df = self.drop_nulls(ds)
+        elif self.method == 'value':
+            self.df = self.set_value(ds)
         else :
             self.df = self.impute_nulls(ds)
         ds.data = self.df
         return ds
     def _show_cols_with_null(self, df, pct=True):
+        self._show_cols_with_null_detailed(df)
+    def _show_cols_with_null_old(self, df, pct=True):
         #self.separator()
         if pct :
             self.print((df.isnull().sum() / df.shape[0])*100)
@@ -82,4 +90,16 @@ class ProcessImputation(Abstract):
             imputer_mode = SimpleImputer(strategy="mean")  # mean
             df[num_cols_to_impute] = imputer_mode.fit_transform(df[num_cols_to_impute])
         self._show_cols_with_null(df, pct=True)
+        return df
+    def set_value(self, ds): # should be done before split or after ?
+        self.separator(caller=self)
+        df = ds.data
+        for col in self.num_cols:
+            print("-" * 50 + f"processing {col}")
+            df[col] = df[col].fillna(self.value) 
+            self.display(df[col].value_counts().to_frame())
+        for col in self.cat_cols:
+            print("-" * 50 + f"processing {col}")
+            df[col] = df[col].fillna(self.value) 
+            self.display(df[col].value_counts().to_frame())
         return df

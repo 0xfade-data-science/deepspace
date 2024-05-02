@@ -1,6 +1,6 @@
 
 from deepspace.base import Base
-import pdb
+#import pdb
 
 class Transformer(Base):
     def __init__(self, ds=None, debug=False):
@@ -8,6 +8,7 @@ class Transformer(Base):
         self.ds = ds
         self.debug = debug
         self.transformers = [self]
+        self.transformed = False
     #@printcall()
     def transform(self, ds):
         self.ds = ds
@@ -18,10 +19,15 @@ class Transformer(Base):
     def set_ds(self, ds):
         self.ds = ds
     def __rshift__(self, t2):
-        #pdb.set_trace()
-        ds = self.t(self.ds)
-        t2.set_ds(ds)
-        t2.transformers = self.transformers +[t2] 
+        ds = self.ds
+        if not self.transformed :
+            ds = self.t(self.ds)
+            self.transformed = True
+        if not t2.transformed :
+            t2.set_ds(ds)
+            ds = t2.t(ds)
+            t2.transformed = True
+            t2.transformers = list(set(self.transformers +[t2])) 
         return t2
     def get_transformers(self):
         return self.transformers

@@ -6,6 +6,10 @@ class Abstract(Transformer):
     def __init__(self, target_col=None, cat_cols=[], num_cols=[], exclude=[], only=[], sep='=', nb=50):
         Base.__init__(self, sep=sep, nb=nb)
         Transformer.__init__(self)
+        if not type(num_cols) == list:
+            raise Exception('num_cols should be a list of features')
+        if not type(cat_cols) == list:
+            raise Exception('cat_cols should be a list of features')
         self.target_col = target_col
         self.num_cols = num_cols
         self.cat_cols = cat_cols

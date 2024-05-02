@@ -3,14 +3,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.exploration.univariate.categorical.ValueCounter import ValueCounter
+from deepspace.transformers.exploration.univariate.categorical.CountPlot import CountPlot
 
-class UnivariateAnalysis(Abstract):
-    def __init__(self, cat_cols = [], ord_cols = [], normalize=True, only=[], debug=False):
-        super().__init__()
-        self.normalize = normalize
-        self.cat_cols = cat_cols
-        self.ord_cols = ord_cols
+class UnivariateAnalysis(ValueCounter, CountPlot):
+    def __init__(self, cat_cols = [], ord_cols = [], normalize=True, dropna=False, only=[], debug=False):
+        ValueCounter.__init__(self, cat_cols=cat_cols, normalize=normalize, dropna=dropna)
+        CountPlot.__init__(self, cat_cols=cat_cols, ord_cols=ord_cols)
         self.only = only
         self.debug = debug
     def transform(self, ds:DataSpace):
@@ -31,8 +30,9 @@ class UnivariateAnalysis(Abstract):
             print("-" * 50)
     def show_countplot(self, df, cat_cols):
         for col in cat_cols:
+            print("-" * 50 + f" {col}")
             self._countplot_pct(df, col)
-            print("-" * 50)
+
     def _countplot_pct(self, df, feature, figsize=(12, 7), cpt=True):
         """
         Boxplot and histogram combined
@@ -68,3 +68,4 @@ class UnivariateAnalysis(Abstract):
 
             ax.annotate(percentage, (x, y), size=12, ha='center')  # Annotate the percentage with center alignment
         plt.show()
+
