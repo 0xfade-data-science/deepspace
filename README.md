@@ -93,7 +93,7 @@ sns.heatmap(..)
 ..
 #scale the data
 ..
-#data building
+#model building
 ..
 ```
 
