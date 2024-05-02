@@ -9,7 +9,6 @@ class Transformer(Base):
         self.debug = debug
         self.transformers = [self]
         self.transformed = False
-    #@printcall()
     def transform(self, ds):
         self.ds = ds
         self.result = ds
@@ -18,8 +17,15 @@ class Transformer(Base):
         return self.transform(ds)
     def set_ds(self, ds):
         self.ds = ds
+    def get_ds(self):
+        return self.ds 
+    def get_data(self):
+        return self.get_ds().get_data()
+    def clone(self):
+        return Transformer(ds=self.ds)
     def __rshift__(self, t2):
         ds = self.ds
+        #execute both transformers
         if not self.transformed :
             ds = self.t(self.ds)
             self.transformed = True

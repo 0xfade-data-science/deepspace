@@ -16,6 +16,8 @@ With Milestone objects, and integrated cloning, it makes it easier to go to a sp
 
 DeepSpace will come with a bunch of predefined classes hence the programmer does not need to create the wheel again.
 
+DeepSpace library will simplify a first analysis of the problem, it gives a rapid glimpse thanks to it's packaged classes.
+
 ## Example
 
 Let's say you work on a data science project in which you are asked to predict the sentiment in the transportation industry.

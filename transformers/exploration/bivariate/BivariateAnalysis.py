@@ -7,7 +7,7 @@ import seaborn as sns
 from deepspace.base import Base
 from deepspace.DataSpace import DataSpace
 from deepspace.transformers.Transformer import Transformer
-from deepspace.transformers.exploration.bivariate.Heatmap import Heatmap
+from deepspace.transformers.exploration.bivariate.CorrHeatmap import CorrHeatmap as Heatmap
 from deepspace.transformers.exploration.plot.ScatterPlot import ScatterPlot
 from deepspace.transformers.exploration.plot.BarPlot import BarPlot
 from deepspace.transformers.exploration.plot.ViolinPlot import ViolinPlot
@@ -63,7 +63,8 @@ class BivariateAnalysis(Abstract):
                 x = c1
                 y = c2
                 ScatterPlot(x, y, figsize=self.figsize).transform(self.ds)
-                ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
+                if self.violin:
+                    ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
     def analyse_cat_vs_num(self):
         target_col = self.ds.target_col
         #categ vs target col when numeric
@@ -76,7 +77,8 @@ class BivariateAnalysis(Abstract):
                         x = target_col
                         y = col
                         BarPlot(col, target_col, figsize=self.figsize).transform(self.ds)
-                        ViolinPlot(x=x, y=y, figsize=self.figsize).transform(self.ds)
+                        if self.violin:
+                            ViolinPlot(x=x, y=y, figsize=self.figsize).transform(self.ds)
 
             else:
                 self.print(f'target {target_col} not numeric')
@@ -93,7 +95,8 @@ class BivariateAnalysis(Abstract):
                         y = col
                         self.separator(n=1, sep='-', string=f'cat col "{y}" vs num col "{x}"')
                         BarPlot(x, y, figsize=self.figsize).transform(self.ds)
-                        ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
+                        if self.violin:
+                            ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
 
     def analyse_cat_vs_cat(self):
         #categ vs categ

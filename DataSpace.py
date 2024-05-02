@@ -41,7 +41,8 @@ class DataSpace(AbstractTransformer):
     def clean(self):
         del self.data
         self.data = None
-
+    def get_data(self):
+        return self.data
     def get_model(self):
         return self._model
     def set_model(self, model):
@@ -128,6 +129,10 @@ class DataSpace(AbstractTransformer):
         self.head()
         self.info()
         self.describe()
+
+    def pivot(self, index, columns, values):
+        self.dfpv = self.data.pivot_table(index=index, columns=columns, values=values)
+        return self.dfpv
 
 class DataSpaceNew(AbstractTransformer):
     def __init__(self, docopy=True):

@@ -4,23 +4,22 @@ from deepspace.DataSpace import DataSpace
 from deepspace.transformers.column.abstract import Abstract
 
 class Heatmap(Abstract):
-    def __init__(self, num_cols=[], sep='=', nb=50, cmap='coolwarm'):
+    def __init__(self, num_cols=[], figsize=(15, 7), annot=True, fmt=".2f", cmap='coolwarm', vmin=0, vmax=None, sep='=', nb=50):
         super().__init__(sep=sep, nb=nb)
         self.num_cols = num_cols
-        self.cmap = cmap #"Spectral"
+        self.figsize = figsize
+        self.annot = annot
+        self.fmt = fmt
+        self.vmin = vmin
+        self.vmax = vmax
+        self.cmap = cmap 
     def transform(self, ds:DataSpace):
         self.ds = ds
-        self.plot()
+        self.plot(ds.data_tmp)
         return ds
-    def plot(self):
+    def plot(self, df):
         self.separator(caller=self)
-        data = self.ds.data
-        if len(self.num_cols) >= 2:
-            data = self.ds.data[self.num_cols]
-
-        corr = data.corr(numeric_only=True)
-        if len(self.num_cols):
-          corr = corr.filter(items=self.num_cols)
-        plt.figure(figsize=(15, 7))
-        sns.heatmap(corr, annot=True, vmin=-1, vmax=1, fmt=".2f", cmap=self.cmap)
+        plt.figure(figsize=self.figsize)
+        sns.heatmap(df, annot=self.annot, fmt=self.fmt, cmap=self.cmap, vmin=self.vmin, vmax=self.vmax)
         plt.show()
+        return self
