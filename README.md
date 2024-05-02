@@ -276,3 +276,15 @@ milestone = (
             >> Finish()
 )
 ```
+
+## Versions
+
+Currently the library is tested with this configuration:
+|-|version|
+| --- | --- |
+|python | 3.9.18|
+|pandas | 2.2.1|
+|numpy | 1.26.4|
+|tensorflow | 2.16.1|
+|sklearn | 1.4.2|
+|statsmodels | 0.14.0|

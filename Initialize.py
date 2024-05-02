@@ -1,3 +1,4 @@
+import sys
 import random
 import warnings
 import numpy as np
@@ -5,6 +6,9 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import backend as kerasBackend
 import matplotlib
+import sklearn
+import statsmodels
+
 
 from deepspace.base import Base 
 
@@ -31,6 +35,10 @@ class Initialize(Base):
 
     def versions(self):
         print(30*"#")
-        df = pd.DataFrame([pd.__version__, np.__version__, tf.__version__], columns=['version'], index=['pandas', 'numpy', 'tensorflow'])
+        (major, minor, micro, releaselevel, serial) = sys.version_info
+        pyver = f'{major}.{minor}.{micro}'
+        df = pd.DataFrame([pyver, pd.__version__, np.__version__, tf.__version__, sklearn.__version__, statsmodels.__version__], 
+                          index=['python', 'pandas', 'numpy', 'tensorflow', 'sklearn', 'statsmodels'],
+                          columns=['version']) 
         self.display(df)
         print(30*"#")
