@@ -12,7 +12,7 @@ The purpose of the library is to avoid repetitive tasks, a.k.a DRY (Don't Repeat
 
 Using OOP paradigm, DeepSpace will **encapsulate** x, y, x_train, x_test, y_train, y_test - as well as other variables - making it easy to manage them.
 
-With Milestone objects, and integrated cloning, it makes it easier to go to a specific checkpoint in the project and start from there a new branch.
+With Milestone objects, integrated cloning, and checkpoint backup, it makes it easier to go to a specific checkpoint in the project and start from there a new branch.
 
 DeepSpace will come with a bunch of predefined classes hence the programmer does not need to create the wheel again.
 
@@ -110,7 +110,7 @@ Initialize(seed=1)
 
 file = "travel_train_data"
 #overview of the data
-milestone =  (
+_ =  (
      >> CSVLoader(file, ",")
      >> Overview()
      >> Describe()
@@ -118,7 +118,6 @@ milestone =  (
      >> CheckNulls()
      >> CheckDuplicated()
      >> CheckOutliers()
-     >> Milestone()
 )
 ```
 
@@ -127,7 +126,7 @@ The >> chevrons are the expression of the Monads strategy.
 The above code can also be simplified by creating a class and not rewriting the whole code again:
 
 ```
-class SuperOverview(Trasnformer):
+class SuperOverview(Transformer):
   def __init__(self, file, sep=','):
       super().__init__()
       self.file = file
@@ -141,14 +140,13 @@ class SuperOverview(Trasnformer):
          >> CheckNulls()
          >> CheckDuplicated()
          >> CheckOutliers()
-         >> Milestone()
-    ).ds
+    )
 ```
 
 Now you can use SuperOverview class like this in your future code :
 
 ```
-milestone =  (SuperOverview(file) >> Milestone())
+_ =  (SuperOverview(file) >> Milestone())
 ```
 
 #### Data analysis, or Exploratory Data Analysis (EDA)
@@ -156,7 +154,7 @@ milestone =  (SuperOverview(file) >> Milestone())
 Just like so to show a bunch of plots (histograms, boxplots, etc) and calculations for the numerical features:
 
 ```
-    (milestone >> numerical.Univariate(num_cols=[]) >> Milestone())
+    (_ >> numerical.Univariate(num_cols=[]))
 ```
 
 You can set the num_cols parameter to only show specific featrues.
@@ -164,20 +162,20 @@ You can set the num_cols parameter to only show specific featrues.
 And the below code is for categorical features:
 
 ```
-    (milestone >> categorical.Univariate() >> Milestone())
+    (_ >> categorical.Univariate() )
 ```
 
 The same hereafter for bivariate analysis:
 
 ```
-    (milestone >> Bivariate(num_cols=(), cat_cols=[]) >> Milestone())
+    (_ >> Bivariate(num_cols=(), cat_cols=[]))
 ```
 
 Anf if you want to see the heatmap only :
 The same hereafter for bivariate analysis:
 
 ```
-    (milestone >> Heatmap(num_cols=()) >> Milestone())
+    (_ >> Heatmap(num_cols=()) )
 ```
 
 #### Data preprocessing
@@ -187,22 +185,18 @@ The same hereafter for bivariate analysis:
 Drop ID feature:
 
 ```
-milestone = (
-    milestone
+_ = (_
     >> DropAdjuster(['ID'])
     >> DropCols()
-    >> Milestone()
 )
 ```
 
 Drop ID and Price_OLD feature:
 
 ```
-milestone = (
-    milestone
+_ = (_
     >> DropAdjuster(['ID','Price_OLD'])
     >> DropCols()
-    >> Milestone()
 )
 ```
 
@@ -212,12 +206,10 @@ Impute nulls (by default categorical with be imputed with the mode and numerical
 
 ```
 saveto = 'milestone-imputation-no-dupes.pkl'
-milestone = (
-    milestone
+_ = (_
     >> ProcessImputation()
     >> DropDuplicates()
     >> Save(saveto)
-    >> Milestone()
 )
 ```
 
@@ -226,24 +218,21 @@ As you can see here can also save the result to a file (pckle file) to be reused
 ##### Feature engineering
 
 ```
-milestone = (
-    milestone
-                >> Log('Departure_Delay_in_Mins', 'Departure_Delay_in_Mins_Log')
-                >> Log('Arrival_Delay_in_Mins', 'Arrival_Delay_in_Mins_Log')
-                >> Log('Travel_Distance', 'Travel_Distance_Log')
-                >> Sum(['Arrival_Delay_in_Mins', 'Departure_Delay_in_Mins'], 'X_Delay_Sum')
-                >> Log('X_Delay_Sum', 'X_Delay_Sum_Log', 10)
-                >> Polynom(['Departure_Delay_in_Mins_Log', 'Arrival_Delay_in_Mins_Log'], 'X_Delay_Ploy')
-                >> Sine('Travel_Distance', 'Travel_Distance_Sine')
-                >> Milestone()
+_ = (_
+    >> Log('Departure_Delay_in_Mins', 'Departure_Delay_in_Mins_Log')
+    >> Log('Arrival_Delay_in_Mins', 'Arrival_Delay_in_Mins_Log')
+    >> Log('Travel_Distance', 'Travel_Distance_Log')
+    >> Sum(['Arrival_Delay_in_Mins', 'Departure_Delay_in_Mins'], 'X_Delay_Sum')
+    >> Log('X_Delay_Sum', 'X_Delay_Sum_Log', 10)
+    >> Polynom(['Departure_Delay_in_Mins_Log', 'Arrival_Delay_in_Mins_Log'], 'X_Delay_Ploy')
+    >> Sine('Travel_Distance', 'Travel_Distance_Sine')
 )
 ```
 
 ##### Separating and Splitting
 
 ```
-milestone = (
-    milestone
+_ = (_
         >> EncoderBeforeSplit()
         >> DropAdjuster(drop_cols=[
                 'Cleanliness_Extremely Poor',
@@ -258,22 +247,19 @@ milestone = (
         >> Separator()
         >> Splitter()
         >> Save('clean_train_chain_result-post-merge-split.pkl')
-        >> Milestone()
 )
 ```
 
 ##### Model Building and testing
 
 ```
-milestone = (
-    milestone
-            Load('clean_train_chain_result-post-merge-split.pkl')
-            >> LogisticRegression()
-            #>> Debug()
-            >> PerfCalculator()
-            >> ShowCoeffs()
-            >> ShowInvCoeffs()
-            >> Finish()
+_ = (_
+        >> Load('clean_train_chain_result-post-merge-split.pkl')
+        >> LogisticRegression()
+        #>> Debug()
+        >> PerfCalculator()
+        >> ShowCoeffs()
+        >> ShowInvCoeffs()
 )
 ```
 ### Complete example
