@@ -13,3 +13,12 @@ class Start(Transformer):
         Transformer.__init__(self, ds=ds)
     def transform(self, _): #unused parameter
         return DataSpace()
+    
+class Continue(Transformer):
+    def __init__(self, ds=None, monad=None):
+        if ds:
+            Transformer.__init__(self, ds=ds)
+        elif monad:
+            Transformer.__init__(self, ds=monad.ds)            
+    def transform(self, _): #unused parameter
+        return self.ds
