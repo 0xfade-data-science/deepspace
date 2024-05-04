@@ -1,6 +1,5 @@
 
 from deepspace.base import Base
-#import pdb
 
 class Transformer(Base):
     def __init__(self, ds=None, debug=False):
@@ -34,7 +33,7 @@ class Transformer(Base):
             t2.set_ds(ds)
             ds = t2.t(ds)
             t2.transformed = True
-            #t2.transformers = list(set(self.transformers +[t2])) 
+            #t2.transformers = list(set(self.transformers +[t2])) #with set we loose the order :/
             t2.transformers = self.transformers +[t2] 
         return t2
     def get_transformers(self):
