@@ -21,8 +21,9 @@ class Transformer(Base):
         return self.ds 
     def get_data(self):
         return self.get_ds().get_data()
-    def clone(self):
-        return Transformer(ds=self.ds)
+    def clone(self, deep=False):
+        ds= self.ds if not deep else self.ds.clone()
+        return Transformer(ds=ds)
     def __rshift__(self, t2):
         ds = self.ds
         #execute both transformers
@@ -33,7 +34,8 @@ class Transformer(Base):
             t2.set_ds(ds)
             ds = t2.t(ds)
             t2.transformed = True
-            t2.transformers = list(set(self.transformers +[t2])) 
+            #t2.transformers = list(set(self.transformers +[t2])) 
+            t2.transformers = self.transformers +[t2] 
         return t2
     def get_transformers(self):
         return self.transformers
