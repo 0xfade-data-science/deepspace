@@ -38,6 +38,5 @@ class Initialize(Base):
         df = pd.DataFrame([pyver, pd.__version__, np.__version__, tf.__version__, sklearn.__version__, statsmodels.__version__], 
                           index=['python', 'pandas', 'numpy', 'tensorflow', 'sklearn', 'statsmodels'],
                           columns=['version']) 
-        df = pd.DataFrame([pd.__version__, np.__version__, tf.__version__], columns=['version'], index=['pandas', 'numpy', 'tensorflow'])
         self.display(df)
         print(30*"#")
