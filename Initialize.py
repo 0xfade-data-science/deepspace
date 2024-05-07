@@ -11,25 +11,14 @@ import statsmodels
 
 from deepspace.base import Base 
 
-<<<<<<< HEAD
-from deepspace.base import Base 
-
-=======
->>>>>>> d71dae2 (Split of Bivariate class to create Plot classes from functions for better reusability)
 class Initialize(Base):
     seed = 1
     ignorewarns = False
     matplotlib_inline = True
     def __init__(self, seed=1, matplotlib_inline=True, ignorewarns=True):
         Initialize.seed = seed
-<<<<<<< HEAD
         Initialize.matplotlib_inline = matplotlib_inline
         Initialize.ignorewarns = ignorewarns
-        #====================================================
-=======
-        #self.seed = seed
-        self.ignorewarns = ignorewarns
->>>>>>> d71dae2 (Split of Bivariate class to create Plot classes from functions for better reusability)
         kerasBackend.clear_session()
         np.random.seed(seed)
         random.seed(seed)
@@ -44,14 +33,11 @@ class Initialize(Base):
 
     def versions(self):
         print(30*"#")
-<<<<<<< HEAD
         (major, minor, micro, releaselevel, serial) = sys.version_info
         pyver = f'{major}.{minor}.{micro}'
         df = pd.DataFrame([pyver, pd.__version__, np.__version__, tf.__version__, sklearn.__version__, statsmodels.__version__], 
                           index=['python', 'pandas', 'numpy', 'tensorflow', 'sklearn', 'statsmodels'],
                           columns=['version']) 
-=======
         df = pd.DataFrame([pd.__version__, np.__version__, tf.__version__], columns=['version'], index=['pandas', 'numpy', 'tensorflow'])
->>>>>>> d71dae2 (Split of Bivariate class to create Plot classes from functions for better reusability)
         self.display(df)
         print(30*"#")
