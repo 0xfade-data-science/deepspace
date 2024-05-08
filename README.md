@@ -202,7 +202,7 @@ _ = (_
 
 ##### Null imputation and dupàlicates removal
 
-Impute nulls (by default categorical with be imputed with the mode and numerical with the mean):
+Impute nulls (by default categorical will be imputed with the mode and numerical with the mean):
 
 ```
 saveto = 'milestone-imputation-no-dupes.pkl'
@@ -263,10 +263,6 @@ _ = (_
 )
 ```
 ### Complete example
-You can find a complete example here: [Uber example notebook](https://github.com/0xfade-data-science/deepspace/blob/main/examples/data%20exploration/Uber/Uber_Case_Study-the-deepspace-way.ipynb)
-
-### Complete example
-
 You can find a complete example here: [Uber example notebook](https://github.com/0xfade-data-science/deepspace/blob/main/examples/data%20exploration/Uber/Uber_Case_Study-the-deepspace-way.ipynb)
 
 ## Underlying python and librairies versions
