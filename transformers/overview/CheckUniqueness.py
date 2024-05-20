@@ -3,8 +3,9 @@ from deepspace.DataSpace import DataSpace
 
 class CheckUniqueness(Transformer):
     ''''''
-    def __init__(self):
+    def __init__(self, cols=[]):
         Transformer.__init__(self)
+        self.cols = cols
     def transform(self, ds: DataSpace):
         self.check_unique(ds.data)
         return ds
@@ -16,5 +17,8 @@ class CheckUniqueness(Transformer):
         self.view_uniqueness(df)
     def view_uniqueness(self, df):
         self.separator()
-        df = self.get_uniqueness(df).to_frame().sort_values(by=[0])
+        cols = df.columns 
+        if len(self.cols) > 0:
+            cols = self.cols
+        df = self.get_uniqueness(df.filter(items=cols)).to_frame().rename(columns={0: 'count'}).sort_values(by=['count'])
         self.display(df)

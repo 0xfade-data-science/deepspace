@@ -14,19 +14,22 @@ class YInverseScaler2(XInverseScaler2):
         XInverseScaler2.__init__(self)
         self.num_cols = num_cols
     def transform(self, ds:DataSpace):
-        self.separator()
         self.ds = ds
         self.scaler = ds.scaler
-        self.num_cols = self.get_num_cols(ds.data)
-        self.train_data_pred = self.unscale()
-        ds.isUnscaled = True
-        ds.train_data_pred = self.train_data_pred
+        self.num_cols = self.get_num_cols()
+        self.inv_train_data_pred = self.invert_scaling()
+        ds.isUnscaled_YTrain = True
+        ds.inv_train_data_pred = self.inv_train_data_pred
         return ds
-    def unscale(self):
-        #x_train = ds.x_train.copy()
-        #if 'const' in ds.columns:
-        #  x_train.drop(columns=['const'], inplace=True)
-        #x_train[ds.target_col] = ds.y_train
-        scaled_data = self.ds.train_data_pred
+    def sanity_check(self, ds:DataSpace):
+        self.separator()
+        if not ds.isScaled:
+            raise Exception('not scaled')
+        if ds.isUnscaled_YTrain :
+            raise Exception('already unscaled')
+    def invert_scaling(self):
+        self.separator()
+        ordered_cols = self._get_ordered_cols(self.ds.cols_scaled, self.ds.inv_train_data_pred)
+        scaled_data = self.ds.inv_train_data_pred[ordered_cols]
         unscaled_data = self.scaler.inverse_transform(scaled_data)
-        return pd.DataFrame(unscaled_data, columns=self.ds.data.columns, index=self.ds.x_train.index)
+        return pd.DataFrame(unscaled_data, columns=self.ds.cols_scaled, index=scaled_data.index)

@@ -15,11 +15,15 @@ class Initialize(Base):
     seed = 1
     ignorewarns = False
     matplotlib_inline = True
-    def __init__(self, seed=1, matplotlib_inline=True, ignorewarns=True):
+    def __init__(self, seed=1, use_sep = True, verbose=True, matplotlib_inline=True, ignorewarns=True):
         Initialize.seed = seed
         Initialize.matplotlib_inline = matplotlib_inline
         Initialize.ignorewarns = ignorewarns
+        Base.use_sep = use_sep
+        Base.verbose = verbose
+        #====
         kerasBackend.clear_session()
+        print(f"Seed: {Initialize.seed}")        
         np.random.seed(seed)
         random.seed(seed)
         tf.random.set_seed(seed)
@@ -29,8 +33,17 @@ class Initialize(Base):
         # To ignore warnings
         if ignorewarns:
             warnings.filterwarnings("ignore")
+        #====
+        self.config()
         self.versions()
 
+    def config(self):
+        print(30*"#")
+        df = pd.DataFrame([Initialize.seed, Initialize.ignorewarns, Initialize.matplotlib_inline], 
+                          index=['seed', 'ignorewarns', 'matplotlib_inline'],
+                          columns=['conf']) 
+        self.display(df)
+        print(30*"#")
     def versions(self):
         print(30*"#")
         (major, minor, micro, releaselevel, serial) = sys.version_info

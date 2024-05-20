@@ -20,8 +20,6 @@ class Calc(PerformanceCalculator):
     def performance(self, predictors, target):
         prediction = self.get_model().predict(predictors) # Predict
         prediction = pd.DataFrame(prediction)
-        #pred = np.exp(pred)
-        #predictors = np.exp(predictors)
         # dataframe of metrics to make it easy to view and work with
-        df_perf = self.normalize_perf(predictors, prediction, target)
-        return df_perf
+        df_perf = self.as_dataframe(predictors, prediction, target)
+        return df_perf, prediction

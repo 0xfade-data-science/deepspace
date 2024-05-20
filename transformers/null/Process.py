@@ -5,7 +5,7 @@ from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace
 #from deepspace.transformers.outliers.Check import CheckOutliers
 
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 from .Check import CheckNulls
 
 class ProcessImputation(Abstract, CheckNulls):

@@ -1,5 +1,6 @@
 import scipy.stats as stats
 import matplotlib.pyplot as plt
+import pylab
 
 from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace

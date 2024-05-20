@@ -29,8 +29,6 @@ class Drop(DropCols, CheckUniqueness):
         debug = False
         cols = []
         for row in uniq.iterrows():
-            if debug:
-                pdb.set_trace()
             rowid = row[0]
             col = row[1][0]
             cnt = row[1][1]

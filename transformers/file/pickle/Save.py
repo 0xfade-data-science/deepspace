@@ -44,7 +44,7 @@ class SaveVersionedTODO(Transformer):
                 if regex.match(file):
                     files.append(file)
 
-class Load(Transformer):
+class LoadOLD(Transformer):
     def __init__(self, path, versioned=True):
         Base.__init__(self, sep='*', nb=50)
         Transformer.__init__(self)

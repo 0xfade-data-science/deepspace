@@ -6,7 +6,7 @@ import seaborn as sns
 from deepspace.DataSpace import DataSpace
 from deepspace.transformers.Transformer import Transformer
 
-class Tr_OLSLinearity(Transformer):
+class CheckLinearity(Transformer):
     '''TODO this is graphical replace by Shapiro-Wilk Test'''
     def __init__(self):
         Transformer.__init__(self)

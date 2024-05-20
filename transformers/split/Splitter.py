@@ -11,10 +11,10 @@ class Splitter(Transformer):
         self.test_size = test_size
         self.dostratification = dostratification
     def transform(self, ds: DataSpace):
-        self.separator()
         self.x, self.y = ds.x, ds.y
         self.split()
-        ds.x_train, ds.y_train, ds.x_test, ds.y_test = self.x_train, self.y_train, self.x_test, self.y_test
+        ds.x_train, ds.y_train = self.x_train, self.y_train
+        ds.x_test, ds.y_test = self.x_test, self.y_test
         return ds
     def split(self):
         self.separator()

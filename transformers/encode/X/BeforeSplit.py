@@ -9,9 +9,12 @@ class EncoderBeforeSplit(AbstractEncoder):
         AbstractEncoder.__init__(self, cat_cols=cat_cols)
         self.drop_first = drop_first
     def transform(self, ds: DataSpace):
-        self.separator(caller=str(self))
-        self.df = ds.data
         self.ds = ds
+        self.df = ds.data
+        self.separator(caller=str(self))
+        self.cat_cols = self.get_cat_cols()
+        self.num_cols = self.get_num_cols()
+        self.df = ds.data.filter(items=self.cat_cols+self.num_cols)
         cols = self.get_cat_cols()
         self.print(f'-> considering cat cols = {", ".join(cols)}')
         self.df = pd.get_dummies(

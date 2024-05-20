@@ -5,10 +5,10 @@ import seaborn as sns
 
 from deepspace.base import Base
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 
 class UnivariateAnalysis(Abstract):
-    def __init__(self, num_cols=[], exclude=[], simple_histos=True, boxplot_histos=True, violin=True, bins=None, limit=None):
+    def __init__(self, num_cols=[], exclude=[], simple_histos=True, boxplot_histos=True, violin=True, bins=None, limit=None, figsize=(5, 5)):
         Base.__init__(self, '=', 50)
         Abstract.__init__(self, num_cols=num_cols, exclude=exclude)
         self.num_cols = num_cols
@@ -18,6 +18,7 @@ class UnivariateAnalysis(Abstract):
         self.violin = violin
         self.limit = limit
         self.bins = bins
+        self.figsize = figsize
     def transform(self, ds:DataSpace):
         self.separator(caller=str(self))
         num_cols = self._get_num_cols(ds)
@@ -45,21 +46,21 @@ class UnivariateAnalysis(Abstract):
     def analyse(self, df, num_cols):
         self.separator()
         if self.simple_histos:
-            self.show_histos(df, num_cols)
+            self.show_histos(df, num_cols, figsize=self.figsize)
         if self.boxplot_histos:
             for feature in num_cols:
                 self.separator(n=1, string=f'histobox for {feature}')
-                self.histogram_boxplot(df, feature, bins=self.bins)
+                self.histogram_boxplot(df, feature, bins=self.bins, figsize=self.figsize)
         if self.violin:
             for feature in num_cols:
                 self.separator(n=1, string=f'violin for {feature}')
-                self.show_violin(df, feature=feature)
-    def show_histos(self, _df, num_cols):
+                self.show_violin(df, feature=feature, figsize=self.figsize)
+    def show_histos(self, _df, num_cols, figsize=(12,7)):
       df = _df[num_cols]
       if self.limit and len(num_cols) == 1:
           col = num_cols[0]
           df = _df.query(f"{col} <= {self.limit}")
-      df[num_cols].hist(figsize=(14, 14), bins=self.bins)
+      df[num_cols].hist(figsize=figsize, bins=self.bins)
       plt.show()
     # Function to plot a boxplot and a histogram along the same scale
 
@@ -90,5 +91,5 @@ class UnivariateAnalysis(Abstract):
         ax_hist2.axvline(df[feature].median(), color="black", linestyle="-") # Add median to the histogram
         plt.show()
     def show_violin(self, df, feature, figsize=(12, 7), log_scale=False):
-        sns.violinplot(data=df, x=feature, log_scale=log_scale)
+        sns.violinplot(data=df, x=feature, log_scale=log_scale, figsize=figsize)
         plt.show()

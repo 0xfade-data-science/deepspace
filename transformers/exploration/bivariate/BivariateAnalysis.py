@@ -12,14 +12,15 @@ from deepspace.transformers.exploration.plot.ScatterPlot import ScatterPlot
 from deepspace.transformers.exploration.plot.BarPlot import BarPlot
 from deepspace.transformers.exploration.plot.ViolinPlot import ViolinPlot
 from deepspace.transformers.exploration.plot.StackedBarPlot import StackedBarPlot
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
+from deepspace.transformers.exploration.plot.Abstract import AbstractPlot
 
-class BivariateAnalysis(Abstract):
+class BivariateAnalysis(AbstractPlot):
     def __init__(self, num_cols=[], cat_cols=[], ord_cols=[], exclude=[], only=[], 
-                 donvn=True, docvn=True, docvc=True, doheatmap=True, violin=True, 
-                 figsize=(12, 7), cmap='coolwarm'):
-        Abstract.__init__(self, target_col=None, cat_cols=cat_cols, num_cols=num_cols, 
-                          exclude=exclude, only=[])          
+                 donvn=True, docvn=True, docvc=True, doheatmap=True, violin=True, violin_bins=10,
+                 figsize=(12, 7), cmap='coolwarm', xticks_rotation=90):
+        AbstractPlot.__init__(self, x=None, y=None, target_col=None, cat_cols=cat_cols, num_cols=num_cols, 
+                          exclude=exclude, only=[], xticks_rotation=xticks_rotation)          
         Base.__init__(self, '=', 50)
         self.num_cols = num_cols
         self.cat_cols = cat_cols
@@ -29,6 +30,7 @@ class BivariateAnalysis(Abstract):
         self.docvn=docvn
         self.docvc=docvc
         self.violin = violin
+        self.violin_bins = violin_bins
         self.only=only
         self.figsize=figsize
         self.cmap = cmap
@@ -64,21 +66,29 @@ class BivariateAnalysis(Abstract):
                 y = c2
                 ScatterPlot(x, y, figsize=self.figsize).transform(self.ds)
                 if self.violin:
-                    ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
+                    n = self.violin_bins
+                    x_binned_feature = f'{x}_{n}_bins' 
+                    self.ds.data[x_binned_feature] = pd.cut(self.ds.data[x], n)
+                    ViolinPlot(x_binned_feature, y, figsize=self.figsize, xticks_rotation=self.xticks_rotation).transform(self.ds)
+    def _create_bins(self, x):
+        n = self.violin_bins
+        x_binned_feature = f'{x}_{n}_bins' 
+        self.ds.data[x_binned_feature] = pd.cut(self.ds.data[x], n)
+        return x_binned_feature
     def analyse_cat_vs_num(self):
         target_col = self.ds.target_col
         #categ vs target col when numeric
         if target_col is not None:
             #if is_numeric_dtype(self.ds.data[target_col]):
             if target_col in self.num_cols:
-                for col in self.cat_cols:
-                    self.separator(n=1, string=f'cat "{col}" vs target "{target_col}"')
-                    if col != target_col:
-                        x = target_col
-                        y = col
-                        BarPlot(col, target_col, figsize=self.figsize).transform(self.ds)
+                for cat_col in self.cat_cols:
+                    if cat_col != target_col:
+                        x = cat_col
+                        y = target_col
+                        self.separator(n=1, string=f'cat "{cat_col}" vs target "{target_col}"')
+                        BarPlot(x, y, figsize=self.figsize).transform(self.ds)
                         if self.violin:
-                            ViolinPlot(x=x, y=y, figsize=self.figsize).transform(self.ds)
+                            ViolinPlot(x, y, figsize=self.figsize, xticks_rotation=self.xticks_rotation).transform(self.ds)
 
             else:
                 self.print(f'target {target_col} not numeric')
@@ -91,12 +101,12 @@ class BivariateAnalysis(Abstract):
             for num_col in self.num_cols:
                 if num_col != target_col:
                     if is_numeric_dtype(self.ds.data[num_col]):
-                        x = num_col
-                        y = col
+                        x = col
+                        y = num_col
                         self.separator(n=1, sep='-', string=f'cat col "{y}" vs num col "{x}"')
                         BarPlot(x, y, figsize=self.figsize).transform(self.ds)
                         if self.violin:
-                            ViolinPlot(x, y, figsize=self.figsize).transform(self.ds)
+                            ViolinPlot(x, y, figsize=self.figsize, xticks_rotation=90).transform(self.ds)
 
     def analyse_cat_vs_cat(self):
         #categ vs categ

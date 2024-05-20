@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 
 class Heatmap(Abstract):
     def __init__(self, num_cols=[], figsize=(15, 7), annot=True, fmt=".2f", cmap='coolwarm', vmin=0, vmax=None, sep='=', nb=50):

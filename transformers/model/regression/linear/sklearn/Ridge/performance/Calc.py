@@ -6,7 +6,7 @@ from deepspace.DataSpace import DataSpace
 from deepspace.base import Base
 
 class Calc(PerformanceCalculator):
-    def __init__(self) : #, perfchecker : MyPerformanceChecker):
+    def __init__(self) : 
         Base.__init__(self, '#!#', 50)
         PerformanceCalculator.__init__(self)
     def transform(self, ds:DataSpace):
@@ -16,3 +16,8 @@ class Calc(PerformanceCalculator):
     def from_ds_init(self, ds):
         self.x_train, self.y_train, self.x_test, self.y_test = ds.x_train, ds.y_train, ds.x_test, ds.y_test
         self._model = ds._model
+    def predict(self, predictors):
+        prediction = self.get_model().predict(predictors) # Predict
+        #reshape for OLS to (rows, 1) (whose shape is (rows,) and creates memory problems) 
+        #prediction = prediction.to_numpy().reshape(prediction.shape[0], 1)
+        return prediction

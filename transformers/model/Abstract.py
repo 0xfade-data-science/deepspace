@@ -18,6 +18,7 @@ class Abstract(Transformer):
     def transform(self, ds:DataSpace):
         self.from_ds_init(ds)
         self.create_model_fit()
+        self.predict()
         self.init_ds(ds)
         return ds
     def from_ds_init(self, ds):
@@ -28,8 +29,8 @@ class Abstract(Transformer):
         return self._model
     def create_model_fit(self):
         pass
-    def predict(self, x):
-        return self._model.predict(x)
+    def predict(self):
+        self._model.predict(x)
     def fit(self):
         pass
     def tune(self):

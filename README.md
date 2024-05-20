@@ -108,7 +108,7 @@ from deepspace.Initialize import Initialize
 Initialize(seed=1)
 #..
 
-file = "travel_train_data"
+file = "travel_inv_train_data"
 #overview of the data
 _ =  (
      >> CSVLoader(file, ",")
@@ -262,7 +262,9 @@ _ = (_
         >> ShowInvCoeffs()
 )
 ```
+
 ### Complete example
+
 You can find a complete example here: [Uber example notebook](https://github.com/0xfade-data-science/deepspace/blob/main/examples/data%20exploration/Uber/Uber_Case_Study-the-deepspace-way.ipynb)
 
 ## Underlying python and librairies versions

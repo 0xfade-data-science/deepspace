@@ -7,15 +7,17 @@ from deepspace.transformers.exploration.univariate.categorical.ValueCounter impo
 from deepspace.transformers.exploration.univariate.categorical.CountPlot import CountPlot
 
 class UnivariateAnalysis(ValueCounter, CountPlot):
-    def __init__(self, cat_cols = [], ord_cols = [], normalize=True, dropna=False, only=[], debug=False):
+    def __init__(self, cat_cols = [], ord_cols = [], normalize=True, 
+              dropna=False, only=[], figsize=(5, 5), debug=False):
         ValueCounter.__init__(self, cat_cols=cat_cols, normalize=normalize, dropna=dropna)
         CountPlot.__init__(self, cat_cols=cat_cols, ord_cols=ord_cols)
         self.only = only
         self.debug = debug
+        self.figsize = figsize
     def transform(self, ds:DataSpace):
         cols = self._get_cat_cols(ds)
         self.show_count(ds.data, cols, normalize=self.normalize)
-        self.show_countplot(ds.data, cols)
+        self.show_countplot(ds.data, cols, figsize=self.figsize)
         return ds
     def show_count(self, df, cat_cols, normalize=True):
         self.separator()
@@ -28,10 +30,10 @@ class UnivariateAnalysis(ValueCounter, CountPlot):
             else  :
               print(df[column].value_counts(normalize=True))
             print("-" * 50)
-    def show_countplot(self, df, cat_cols):
+    def show_countplot(self, df, cat_cols, figsize):
         for col in cat_cols:
             print("-" * 50 + f" {col}")
-            self._countplot_pct(df, col)
+            self._countplot_pct(df, col, figsize)
 
     def _countplot_pct(self, df, feature, figsize=(12, 7), cpt=True):
         """

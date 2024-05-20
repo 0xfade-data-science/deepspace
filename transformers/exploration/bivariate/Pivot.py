@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 from deepspace.transformers.chain.Monad import Monad
 
 class Pivot(Abstract):

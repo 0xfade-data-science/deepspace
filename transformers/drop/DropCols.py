@@ -16,15 +16,17 @@ class DropCols(Transformer):
         self.ds.cat_cols = self.minus_many(self.ds.cat_cols, self.ds.drop_cols)
         self.ds.data = df
     def drop(self, df):
+        self.separator()
         if len(self.cols) <= 0:
             #intersept
             self.cols = self.ds.drop_cols
+        self.print(f'cols to drop ' + ','.join(self.cols))
         self.cols = self.intercept(self.cols, df.columns.values.tolist())#only thos still present
+        self.print(f'remaining cols to drop cols ' + ','.join(self.cols))
         if self.inplace:
             df.drop(columns=self.cols, inplace=self.inplace)
         else:
             df = df.drop(columns=self.cols, inplace=self.inplace)
-        self.print(f'droping cols ' + ','.join(self.cols))
         self.print(f'remaining cols ' + ','.join(df.columns.values.tolist()))
         #adjust num cols and cat cols
         return df

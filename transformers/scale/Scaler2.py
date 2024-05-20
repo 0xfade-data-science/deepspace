@@ -3,10 +3,8 @@ from sklearn.preprocessing import MinMaxScaler
 
 #from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 #from deepspace.transformers.outliers.Check import CheckOutliers
-
-import deepspace.transformers as T 
 
 class Scaler2(Abstract):
     '''not tested yet'''
@@ -23,7 +21,11 @@ class Scaler2(Abstract):
             ds.data[col] = self.df_num_scaled[col]
         ds.scaler = self.scaler #store it so that we can unscale later
         ds.isScaled = True
-        ds.isUnscaled = False
+        ds.isUnscaled_XTest = False
+        ds.isUnscaled_YTest = False
+        ds.isUnscaled_XTrain = False
+        ds.isUnscaled_YTrain = False
+        ds.cols_scaled = self.num_cols
         return ds
     def scale(self, df): #x_train
         #Creating an instance of the MinMaxScaler
@@ -35,11 +37,4 @@ class Scaler2(Abstract):
         # The above scaler returns the data in array format, below we are converting it back to pandas DataFrame
         df = pd.DataFrame(data, index = index, columns = columns)
         return df
-    def get_num_cols__NOTUSED(self, df):
-        if len(self.num_cols) <= 0:
-            if len(self.ds.num_cols) <=0:
-                self.num_cols = self.org_num_cols = self.df.select_dtypes(
-                    include=["number"]).columns.tolist()
-            else:
-                self.num_cols = self.ds.num_cols
-        return self.num_cols
+

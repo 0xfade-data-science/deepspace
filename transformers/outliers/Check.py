@@ -2,7 +2,7 @@ from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace
 from deepspace.transformers.encode.X.BeforeSplit import EncoderBeforeSplit
 
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 
 class CheckOutliers(Abstract):
     ''' Only for Y, not tested yet'''

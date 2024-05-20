@@ -5,7 +5,7 @@ import pandas as pd
 import copy as copier
 
 from deepspace.transformers.Transformer import Transformer
-from deepspace.transformers.column.abstract import Abstract as AbstractTransformer
+from deepspace.transformers.column.Abstract import Abstract as AbstractTransformer
 from deepspace.transformers.file.File import File
 
 class DataSpace(AbstractTransformer):
@@ -18,6 +18,8 @@ class DataSpace(AbstractTransformer):
         self.id_cols = []
         self.drop_cols = []
         self.assumptions = {}
+
+        #Data
         self.data = None
         self.x = None
         self.y = None
@@ -25,6 +27,26 @@ class DataSpace(AbstractTransformer):
         self.y_train = None
         self.x_test = None
         self.y_test = None
+
+        #Separating        
+        self.isSeparateApplyed = False
+
+        #Scaling
+        self.scaler = None
+        self.isScaled = True
+        self.isUnscaled_XTest = False
+        self.isUnscaled_YTest = False
+        self.isUnscaled_XTrain = False
+        self.isUnscaled_YTrain = False
+
+        #Remove MultiColinearity
+        self.isRmcUnApplyed_XTrain = False
+        self.isRmcUnApplyed_XTest = False
+
+        #Remove Non Significant Features
+        self.isRnsfUnApplyed_XTrain = False
+        self.isRnsfUnApplyed_XTest = False
+
     def transform(self, file:File):
         #self.filepath, self.filesep = specs
         #self.data = pd.read_csv(self.filepath, sep=self.filesep)
@@ -257,3 +279,28 @@ class DataSpaceNew(AbstractTransformer):
         self.info()
         self.describe()
 
+class SubDataSpace(DataSpace):
+   def __init__(self, docopy=True):
+        super().__init__()
+        self.target_col = None
+        self.model = None
+        self.num_cols = []
+        self.cat_cols = []
+        self.id_cols = []
+        self.drop_cols = []
+        self.assumptions = {}
+        self.data = None
+        self.x = None
+        self.y = None
+        self.x_train = None
+        self.y_train = None
+        self.x_test = None
+        self.y_test = None
+
+        self.isScaled = True
+        self.isRmcUnApplyed_XTrain = False
+        self.isRnsfUnApplyed_XTrain = False
+        self.isUnscaled_XTest = False
+        self.isUnscaled_YTest = False
+        self.isUnscaled_XTrain = False
+        self.isUnscaled_YTrain = False

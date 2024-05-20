@@ -17,5 +17,5 @@ class Load(Transformer):
         with open(self.path, 'rb') as inp:
             self.print(f"Loading from {self.path}")
             ds = pickle.load(inp)
-            print(ds)  # 
+            #print(ds)  # 
         return ds

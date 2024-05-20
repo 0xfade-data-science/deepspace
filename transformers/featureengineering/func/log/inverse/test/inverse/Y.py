@@ -5,16 +5,10 @@ from deepspace.transformers.featureengineering.func.Abstract import FuncTransfor
 class Exp(FuncTransformer):
       '''Target Feature Engineering'''
       def __init__(self, feature, new_feature):
-        FuncTransformer.__init__(self, feature, new_feature, np.exp)
-        self.feature = feature
-        self.new_feature = new_feature
-      def transformOLD(self, ds):
-        df = ds.train_data_pred
-        df[self.feature] = np.exp(df[self.new_feature])
-        return ds      
+        FuncTransformer.__init__(self, new_feature, feature, np.exp)
       def init_from_ds(self, ds):
           self.ds = ds
-          self.df = self.ds.test_data_pred 
+          self.df = self.ds.inv_test_data_pred 
       def ds_init(self):
-          self.ds.test_data_pred = self.df
+          self.ds.inv_test_data_pred = self.df
     

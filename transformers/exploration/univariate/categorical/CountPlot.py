@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 
 class CountPlot(Abstract):
     def __init__(self, cat_cols = [], ord_cols = [], only=[], debug=False):

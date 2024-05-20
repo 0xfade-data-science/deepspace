@@ -2,7 +2,7 @@ import pandas as pd
 
 from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace
-from deepspace.transformers.column.abstract import Abstract
+from deepspace.transformers.column.Abstract import Abstract
 
 class Separator(Abstract):
     def __init__(self, target_col=None):
@@ -16,9 +16,8 @@ class Separator(Abstract):
         y = df[self.target_col]
         x = pd.DataFrame(x)
         y = pd.DataFrame(y)
-        self.display(x.head())
-        self.display(y.head())
+    #    self.display(x.head())
+    #    self.display(y.head())
         ds.x, ds.y = x,y
-        self.display(x.head())
-        self.display(y.head())
+        ds.isSeparateApplyed = True
         return ds

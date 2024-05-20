@@ -12,7 +12,7 @@ class Calc(Transformer):
         Transformer.__init__(self)
     def transform(self, ds:DataSpace):
         self.from_ds_init(ds)
-        ds.perf_train, ds.perf_test = self.calc_perf()
+        ds.perf_train, ds.perf_test = self.calc_perf()                
         return ds
     def from_ds_init(self, ds):
         self.ds = ds
@@ -25,11 +25,11 @@ class Calc(Transformer):
         return self.perf_train(), self.perf_test()
     def perf_train(self):
         self.separator()
-        self.perf_train_vals = self.performance(self.x_train, self.y_train)
+        self.perf_train_vals, self.ds.y_train_pred = self.performance(self.x_train, self.y_train)
         return self.perf_train_vals
     def perf_test(self):
         self.separator()
-        self.perf_test_vals = self.performance(self.x_test, self.y_test)
+        self.perf_test_vals, self.ds.y_test_pred  = self.performance(self.x_test, self.y_test)
         return self.perf_test_vals
     def get_perf(self):
         return self.perf_train_vals, self.perf_test_vals
@@ -43,13 +43,13 @@ class Calc(Transformer):
         prediction = self.predict(predictors) # Predict
         # dataframe of metrics to make it easy to view, compere and work with
         df_perf = self.as_dataframe(predictors, prediction, target)
-        return df_perf
+        return df_perf, prediction
     def get_rmse(self, target, prediction):
         return np.sqrt(mean_squared_error(target, prediction))
     def get_mae(self, target, prediction):
         return mean_absolute_error(target, prediction)
-    def get_mape(self, targets, predictions):
-        return np.mean(np.abs(targets - predictions) / targets) * 100
+    def get_mape(self, target, prediction):
+        return np.mean(np.abs(target - prediction) / target) * 100
     def get_r2(self, target, prediction):
         return r2_score(target, prediction)
     def adj_r2(self, predictors, targets, predictions):

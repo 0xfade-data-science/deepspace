@@ -42,3 +42,7 @@ class Abstract(Transformer):
         return self._get_cols(self.cat_cols, ds.cat_cols, ds.data, ["object", "category"])
     def _get_num_cols(self, ds):
         return self._get_cols(self.num_cols, ds.num_cols, ds.data, ["number"])
+    def get_cat_cols(self):
+        return self._get_cat_cols(self.ds)
+    def get_num_cols(self):
+        return self._get_num_cols(self.ds)

@@ -13,7 +13,18 @@ from deepspace.DataSpace import DataSpace
 from deepspace.Initialize import Initialize
 
 class Model(Abstract):
-    def __init__(self, seed=Initialize.seed, max_depth=None, criterion="squared_error", min_samples_leaf=1, show_summary=False, text_mode=True) :
+    cv = 3
+    scoring = 'neg_mean_squared_error'
+    verbose = 3
+    def __init__(self, seed=Initialize.seed, 
+                max_depth=None, criterion="squared_error", min_samples_leaf=1, 
+                params = {'max_depth': None, 'criterion':"squared_error", 'min_samples_leaf':1},
+                do_tuning=False, tuning_params={'param_grid':
+                                        {'max_depth': np.arange(2, 7),
+                                        'criterion': ['absolute_error', 'squared_error'],
+                                        'min_samples_leaf': [5, 10, 20, 25]
+                                        }, 'cv':3, 'scoring':'neg_mean_squared_error', 'verbose':3},
+                                    show_summary=False, text_mode=True) :
         Base.__init__(self, '=', 50)
         Abstract.__init__(self)
         self._model = None
@@ -21,16 +32,37 @@ class Model(Abstract):
         self.max_depth = max_depth
         self.criterion= criterion
         self.min_samples_leaf = min_samples_leaf
+        self.params = params
+        self.do_tuning = do_tuning
+        self.tuning_params = tuning_params
         self.show_summary = show_summary
         self.text_mode = text_mode
     def transform(self, ds:DataSpace):
         self.from_ds_init(ds)
         # Decision Tree Regressor
         self.create_model_fit()
-        print('shapes ', self.x_train.shape, self.x_test.shape)
         self.init_ds(ds)
+        print('shapes ', self.x_train.shape, self.x_test.shape)
         if self.show_summary:
             self.summary()
+        if self.do_tuning:
+            cv = self.tuning_params['cv'] if 'cv' in self.tuning_params else Model.cv
+            scoring = self.tuning_params['scoring'] if 'scoring' in self.tuning_params else Model.scoring
+            verbose = self.tuning_params['verbose'] if 'verbose' in self.tuning_params else Model.verbose
+            self.print(self.tuning_params['param_grid'])
+            self.print({'cv': cv, 'verbose': verbose, 'scoring': scoring})
+            best_dt, best_params = self.tune(self.ds,  
+                                            parameters=self.tuning_params['param_grid'], 
+                                            scoring=scoring,
+                                            cv=cv,
+                                            verbose=verbose)
+            self.print(best_dt)
+            self.print(best_params)
+            self._model = best_dt
+            self._model.fit(self.x_train, self.y_train)
+            self.ds._model = self._model
+        self.init_ds(ds)
+
         return ds
     def from_ds_init(self, ds):
         self.x_train, self.y_train, self.x_test, self.y_test = ds.x_train, ds.y_train, ds.x_test, ds.y_test
@@ -57,11 +89,11 @@ class Model(Abstract):
         gridCV = gridCV.fit(ds.x_train, ds.y_train)
 
         # Set the classifier to the best combination of parameters
-        dtree_estimator = gridCV.best_estimator_
+        dtree_best_estimator = gridCV.best_estimator_
 
         # Fit the best estimator to the data
-        dtree_estimator.fit(ds.x_train, ds.y_train)
-        return dtree_estimator
+        dtree_best_estimator.fit(ds.x_train, ds.y_train)
+        return dtree_best_estimator, gridCV.best_params_
 
     def summary(self):
         self.show_tree(self.text_mode)

@@ -25,5 +25,5 @@ class Calc(PerformanceCalculator):
         prediction = pd.DataFrame(prediction)
         # dataframe of metrics to make it easy to view and work with
         df_perf = self.as_dataframe(predictors, prediction, target)
-        return df_perf
+        return df_perf, prediction
 

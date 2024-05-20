@@ -6,12 +6,10 @@ class DropColsXYXY(DropCols):
         DropCols.__init__(self, cols=cols, inplace=inplace)
     def transform(self, ds: DataSpace):
         self.ds = ds
-        x_train = self.drop(ds.x_train)
-        x_test = self.drop(ds.x_test)
-        self.adjust(x_train, x_test)
+        self.ds.x_train = self.drop(ds.x_train)
+        self.ds.x_test = self.drop(ds.x_test)
+        self.adjust()
         return ds
-    def adjust(self, x_train, x_test):
+    def adjust(self):
         self.ds.num_cols = self.minus_many(self.ds.num_cols, self.ds.drop_cols)
         self.ds.cat_cols = self.minus_many(self.ds.cat_cols, self.ds.drop_cols)
-        self.ds.x_train = x_train
-        self.ds.x_test = x_test

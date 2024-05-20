@@ -1,4 +1,5 @@
 
+from statsmodels.compat import lzip
 import statsmodels.stats.api as sms
 
 from deepspace.transformers.Transformer import Transformer

@@ -15,7 +15,7 @@ class LinePlot(AbstractPlot):
         self.plot(self.x, self.y, estimator=self.estimator, errorbar=self.errorbar, color=self.color, hue=self.hue)
         return ds
     def plot(self, x, y, estimator='mean', errorbar=None, color='red', hue=None):
-        self.separator(n=1, caller=self, string=f'plot for {x}/{y}')
+        self.separator(n=1, caller=self, string=f'plotting for {x}/{y}')
         data = self.ds.data
         #TODO
         #if x in self.ord_cols:
