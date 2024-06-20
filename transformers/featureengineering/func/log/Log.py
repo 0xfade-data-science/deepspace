@@ -3,7 +3,7 @@ import numpy as np
 from deepspace.transformers.Transformer import Transformer
 from deepspace.DataSpace import DataSpace
 from deepspace.transformers.featureengineering.func.Forward import Forward
-from deepspace.transformers.featureengineering.func.Back<ward import Backward
+from deepspace.transformers.featureengineering.func.Backward import Backward
 
 class Log(Forward):
     '''Target Feature Engineering'''
